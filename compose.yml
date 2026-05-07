@@ -1,0 +1,32 @@
+services:
+  rails:
+    container_name: rails
+    build:
+      context: .
+      dockerfile: Dockerfile.dev 
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/workspace
+      - bundle_data:/usr/local/bundle
+    env_file:
+      - ./.env.local
+    working_dir: /workspace
+    depends_on:
+      - postgres
+    entrypoint: sh ./entrypoint.sh
+    command: sleep infinity
+    ports:
+      - 3000:3000
+
+  postgres:
+    image: postgres:18.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  bundle_data:
+  pgdata:
