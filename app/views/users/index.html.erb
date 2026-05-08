@@ -4,11 +4,9 @@
   <%= link_to "新規作成", new_user_path %>
 
   <% @users.each do |user| %>
-    <div style="margin-bottom: 10px;">
       <%= user.name %>
       <%# ループ内の各 user オブジェクトを渡すことで、正しく ID が付与されます %>
       <%= button_to "Delete", user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-    </div>
   <% end %>
 
 </div>
