@@ -1,6 +1,8 @@
-<h1>Edit User</h1>
+<%= form_with model: user do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
 
-<%= form_with model: @user do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -10,5 +12,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<%= link_to "Back", @user %>
