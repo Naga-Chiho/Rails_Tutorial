@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     Rails.cache.clear
   end
 
-  test "should get index" do
+  test "メインページの表示" do
     get users_url
     assert_response :success
   end

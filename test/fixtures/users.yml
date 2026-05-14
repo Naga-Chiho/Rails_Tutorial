@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test_data_1:
   name: David Heinemeier Hansson
-
-two:
+s
+test_data_2:
   name: Steve Ross Kellock
