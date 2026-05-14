@@ -17,37 +17,37 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
+  test "新規登録ページのフォーム作成" do
     get new_user_url
     assert_response :success
   end 
 
-  test "should create user" do
+  test "新規登録" do
     assert_difference("User.count") do
       post users_url, params: { user: { name: "New Name" } }
     end
     assert_redirected_to user_url(User.last)
   end  
 
-  test "should get edit" do
+  test "ユーザ情報登録ページのフォーム作成" do
     get user_url(@user)
     assert_response :success
   end
 
-  test "should show user" do
+  test "ユーザ情報詳細表示" do
     # セットアップ時の@articleインスタンス変数を再利用
     get user_url(@user)
     assert_response :success
   end
 
-  test "should destroy user" do
+  test "ユーザ情報削除" do
     assert_difference("User.count", -1) do
       delete user_url(@user)
     end
     assert_redirected_to users_path
   end
 
-  test "should update user" do
+  test "情報更新" do
     patch user_url(@user), params: { user: { name: "updated" } }
     assert_redirected_to user_path(@user)
     # 更新されたデータをフェッチするために関連付けをリロードし、タイトルが更新されたというアサーションを行う
