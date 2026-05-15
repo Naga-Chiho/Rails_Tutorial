@@ -2,10 +2,6 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   # 各テストの実行後に呼ばれる
-  teardown do
-    # コントローラがキャッシュを使っている場合、テスト後にリセットしておくとよい
-    Rails.cache.clear
-  end
 
   test "メインページの表示" do
     get users_url
