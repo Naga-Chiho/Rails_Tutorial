@@ -1,5 +1,17 @@
 <h1><%= @user.name %></h1>
 
+<div id="user_details">
+  <p><strong>名前:</strong> <%= @user.name %></p>
+  <p><strong>ふりがな:</strong> <%= @user.furigana %></p>
+  <p><strong>性別:</strong> <%= @user.gender %></p>
+  <p><strong>電話番号:</strong> <%= @user.phone %></p>
+  <p><strong>携帯番号:</strong> <%= @user.mobile_phone %></p>
+  <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+  <p><strong>郵便番号:</strong> <%= @user.postal_code %></p>
+  <p><strong>住所1:</strong> <%= @user.address1 %></p>
+  <p><strong>誕生日:</strong> <%= @user.birthday %></p>
+</div>
+
 <%= link_to "Back", users_path %>
 <%= link_to "Edit", edit_user_path(@user) %>
 <%= button_to "Delete", @user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
