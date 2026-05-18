@@ -39,8 +39,8 @@
   </div>
 
   <div>
-    <%= form.label :address1, "住所1（都道府県）" %>
-    <%= form.text_field :address1 %>
+   <%= form.label :address1, "都道府県" %>
+   <%= form.select :address1, User.address1s.keys, { include_blank: "選択してください" }, { class: "form-control" } %>
   </div>
 
   <div>
