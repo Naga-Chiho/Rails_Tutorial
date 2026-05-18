@@ -3,12 +3,73 @@
     <p class="error"><%= form.object.errors.full_messages.first %></p>
   <% end %>
 
-  <div>
-    <%= form.label :name %>
+<div>
+    <%= form.label :name, "氏名" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :furigana, "フリガナ" %>
+    <%= form.text_field :furigana %>
+  </div>
+
+  <div>
+    <%= form.label :gender, "性別" %>
+    <%= form.select :gender, ["男性", "女性", "その他"], include_blank: "選択してください" %>
+  </div>
+
+  <div>
+    <%= form.label :phone, "電話番号" %>
+    <%= form.telephone_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :mobile_phone, "携帯電話番号" %>
+    <%= form.telephone_field :mobile_phone %>
+  </div>
+
+  <div>
+    <%= form.label :email, "メールアドレス" %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :postal_code, "郵便番号" %>
+    <%= form.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= form.label :address1, "住所1（都道府県）" %>
+    <%= form.text_field :address1 %>
+  </div>
+
+  <div>
+    <%= form.label :address2, "住所2（市区町村）" %>
+    <%= form.text_field :address2 %>
+  </div>
+
+  <div>
+    <%= form.label :address3, "住所3（町名・番地）" %>
+    <%= form.text_field :address3 %>
+  </div>
+
+  <div>
+    <%= form.label :address4, "住所4（建物名・部屋番号）" %>
+    <%= form.text_field :address4 %>
+  </div>
+
+  <div>
+    <%= form.label :address5, "住所5（その他補足）" %>
+    <%= form.text_field :address5 %>
+  </div>
+
+  <div>
+    <%= form.label :birthday, "生年月日" %>
+    <%# カラムがdate型なので、カレンダーから選べる date_field がいいかなと思って採用%>
+    <%= form.date_field :birthday %>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= form.submit "保存する" %>
   </div>
 <% end %>
