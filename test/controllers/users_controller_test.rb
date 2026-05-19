@@ -21,19 +21,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end  
 
   test "ユーザ情報登録ページのフォーム作成" do
-    @user = users(:one)
+    @user = users(:test_data_1)
     get user_url(@user)
     assert_response :success
   end
 
   test "ユーザ情報詳細表示" do
-    @user = users(:one)
+    @user = users(:test_data_1)
     get user_url(@user)
     assert_response :success
   end
 
   test "ユーザ情報削除" do
-    @user = users(:one)
+    @user = users(:test_data_1)
     assert_difference("User.count", -1) do
       delete user_url(@user)
     end
@@ -41,7 +41,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "情報更新" do
-    @user = users(:one)
+    @user = users(:test_data_1)
     patch user_url(@user), params: { user: { name: "updated" } }
     assert_redirected_to user_path(@user)
     # 更新されたデータをフェッチするために関連付けをリロードし、タイトルが更新されたというアサーションを行う

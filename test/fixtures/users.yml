@@ -1,7 +1,34 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 test_data_1:
-  name: David Heinemeier Hansson
+  name : 三井 碧透
+  furigana : ミツイ アオト
+  gender  : 男
+  phone : 0555-39-4957
+  mobile_phone : 080-2422-3182
+  email : aoto798@hdhq.zjxn.jt
+  postal_code : 409-2524
+  address1 : 山梨県
+  address2 : 南巨摩郡身延町
+  address3 : 身延
+  address4 : 3-2
+  address5 :
+  birthday : 1998/01/10
 
 test_data_2:
-  name: Steve Ross Kellock
+  name : 石山 光彦
+  furigana : ミイシヤマ ミツヒコ
+  gender  : 男
+  phone : 059-67-1107
+  mobile_phone : 
+  email : mitsuhikoishiyama@auplhztl.be
+  postal_code : 510-0834
+  address1 : 三重県
+  address2 : 四日市市
+  address3 : ときわ
+  address4 : 4-14
+  address5 : ときわグリーン105
+  birthday : 1946/04/02
+
+
+     
