@@ -35,12 +35,14 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
+      puts @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
 
   private
     def user_params
+
       params.expect(user: [ 
         :name, 
         :furigana, 
@@ -58,3 +60,6 @@ class UsersController < ApplicationController
       ])
     end
 end
+
+
+
