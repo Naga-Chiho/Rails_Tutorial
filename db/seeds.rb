@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "csv"
+
+CSV.foreach("/workspace/db/personal_information.csv", headers: true) do |row|
+  User.create(
+    name:         row["namae"],
+    furigana:     row["rubi"],
+    gender:       row["seibetu"],
+    phone:        row["denwa"],
+    mobile_phone: row["keitai"],
+    email:        row["mairu"],
+    postal_code:  row["yuubinbango"],
+    address1:     row["jusho1"],
+    address2:     row["jusho2"],
+    address3:     row["jusho3"],
+    address4:     row["jusho4"],
+    address5:     row["jusho5"],
+    birthday:     row["tanjobi"]
+  )
+end
