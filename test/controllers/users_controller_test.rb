@@ -78,5 +78,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_url(@user)
     @user.reload
     assert_equal "岩間匠", @user.name
+    assert_equal "イワマタクミ", @user.furigana
+    assert_equal "男", @user.gender
+    assert_equal "086-749-2481", @user.phone
+    assert_equal "090-5535-0024", @user.mobile_phone
+    assert_equal "cwiwdlnwtakumi56147@ipun.jjn.rsg", @user.email
+    assert_equal "710-0053", @user.postal_code
+    assert_equal "岡山県", @user.address1
+    assert_equal "倉敷市", @user.address2
+    assert_equal "東町", @user.address3
+    assert_equal "2-19-18", @user.address4
+    assert_equal "東町アパート316", @user.address5
+    assert_equal "1987-04-16", @user.birthday.to_s
   end
 end
