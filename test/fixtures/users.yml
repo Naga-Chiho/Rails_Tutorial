@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 test_data_1:
-  name : 三井 碧透
-  furigana : ミツイ アオト
+  name : 三井碧透
+  furigana : ミツイアオト
   gender  : 男
   phone : 0555-39-4957
   mobile_phone : 080-2422-3182
@@ -16,8 +16,8 @@ test_data_1:
   birthday : 1998/01/10
 
 test_data_2:
-  name : 石山 光彦
-  furigana : ミイシヤマ ミツヒコ
+  name : 石山光彦
+  furigana : ミイシヤマミツヒコ
   gender  : 男
   phone : 059-67-1107
   mobile_phone : 

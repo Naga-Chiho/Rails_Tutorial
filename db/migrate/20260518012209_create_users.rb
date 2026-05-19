@@ -14,7 +14,6 @@ class CreateUsers < ActiveRecord::Migration[8.1]
       t.string :address4
       t.string :address5
       t.date :birthday
-
       t.timestamps
     end
   end
