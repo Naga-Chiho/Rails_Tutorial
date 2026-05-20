@@ -13,9 +13,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @department.subscribers.where(subscriber_params).first_or_create
-    redirect_to @department, notice: "You are now subscribed."
-
+    @department.departments.where(department_params).first_or_create
+    redirect_to @department
+    
     if @user.save
       redirect_to @user
     else
