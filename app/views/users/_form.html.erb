@@ -1,14 +1,111 @@
 <%= form_with model: user do |form| %>
-  <% if form.object.errors.any? %>
-    <p class="error"><%= form.object.errors.full_messages.first %></p>
-  <% end %>
 
   <div>
-    <%= form.label :name %>
+    <%= form.label :name, "氏名" %>
     <%= form.text_field :name %>
+    <% if form.object.errors[:name].any? %>
+       <p><%= form.object.errors.full_messages_for(:name).first %></p>
+    <% end %>
+  </div>
+    
+
+  <div>
+    <%= form.label :furigana, "フリガナ" %>
+    <%= form.text_field :furigana %>
+    <% if form.object.errors[:furigana].any? %>
+       <p><%= form.object.errors.full_messages_for(:furigana).first %></p>
+    <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.label :gender, "性別" %>
+    <%= form.select :gender, ["男性", "女性", "その他"], include_blank: "選択してください" %>
+    <% if form.object.errors[:gender].any? %>
+       <p><%= form.object.errors.full_messages_for(:gender).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :phone, "電話番号" %>
+    <%= form.telephone_field :phone %>
+    <% if form.object.errors[:phone].any? %>
+       <p><%= form.object.errors.full_messages_for(:phone).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :mobile_phone, "携帯電話番号" %>
+    <%= form.telephone_field :mobile_phone %>
+    <% if form.object.errors[:mobile_phone].any? %>
+       <p><%= form.object.errors.full_messages_for(:mobile_phone).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :email, "メールアドレス" %>
+    <%= form.email_field :email %>
+    <% if form.object.errors[:email].any? %>
+       <p><%= form.object.errors.full_messages_for(:email).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :postal_code, "郵便番号" %>
+    <%= form.text_field :postal_code %>
+    <% if form.object.errors[:postal_code].any? %>
+       <p><%= form.object.errors.full_messages_for(:postal_code).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+   <%= form.label :address1, "都道府県" %>
+   <%= form.select :address1, User.address1s.keys %>
+    <% if form.object.errors[:address1].any? %>
+       <p><%= form.object.errors.full_messages_for(:address1).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address2, "市区町村" %>
+    <%= form.text_field :address2 %>
+    <% if form.object.errors[:address2].any? %>
+       <p><%= form.object.errors.full_messages_for(:address2).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address3, "町名・丁目" %>
+    <%= form.text_field :address3 %>
+    <% if form.object.errors[:address3].any? %>
+       <p><%= form.object.errors.full_messages_for(:address3).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address4, "番地" %>
+    <%= form.text_field :address4 %>
+    <% if form.object.errors[:address4].any? %>
+       <p><%= form.object.errors.full_messages_for(:address4).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address5, "建物名・部屋番号" %>
+    <%= form.text_field :address5 %>
+    <% if form.object.errors[:address5].any? %>
+       <p><%= form.object.errors.full_messages_for(:address5).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :birthday, "生年月日" %>
+    <%= form.date_field :birthday,value: "2000-01-01"%>
+    <% if form.object.errors[:birthday].any? %>
+       <p><%= form.object.errors.full_messages_for(:birthday).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "保存する" %>
   </div>
 <% end %>
