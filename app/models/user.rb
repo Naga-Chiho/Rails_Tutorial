@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :departments
+  validates :name, presence: true
+
   validates :name, presence: { message: "名前は必須です" }
   validates :name, length: { in: 2..50 ,message: "文字数が不適切です"}
 
