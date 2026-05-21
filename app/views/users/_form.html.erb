@@ -26,6 +26,11 @@
   </div>
 
   <div>
+    <%= form.label :index_users_on_department_id, "部署" %>
+    <%= form.select :gender, ["PD1", "PD2", "Iot", "データマネジメント"], include_blank: "選択してください" %>
+  </div>
+
+  <div>
     <%= form.label :phone, "電話番号" %>
     <%= form.telephone_field :phone %>
     <% if form.object.errors[:phone].any? %>

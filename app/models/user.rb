@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :departments
+  belongs_to :department 
+  validates :name, presence: true
 
   validates :name, presence: { message: "名前は必須です" }
   validates :name, length: { in: 2..50 ,message: "文字数が不適切です"}
@@ -27,7 +28,7 @@ class User < ApplicationRecord
 
   validates :birthday, presence: { message: "誕生日は必須です" }
   validates_each :birthday do |record, attr, value|
-    record.errors.add(attr, "未来の日付は選択できません") if value > Date.today
+    # record.errors.add(attr, "未来の日付は選択できません") if value > Date.today
   end
 
 

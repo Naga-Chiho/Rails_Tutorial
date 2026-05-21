@@ -13,8 +13,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @department.departments.where(department_params).first_or_create
-    redirect_to @department
     
     if @user.save
       redirect_to @user
@@ -45,10 +43,10 @@ class UsersController < ApplicationController
 
   private
     def user_params
-
-      params.expect(user: [ 
+      params.require(:user).permit(
         :name, 
-        :furigana, 
+        :furigana,
+        :department_id,
         :gender, 
         :phone, 
         :mobile_phone, 
@@ -59,18 +57,12 @@ class UsersController < ApplicationController
         :address3, 
         :address4, 
         :address5, 
-        :birthday 
+        :birthday,
+      )
+      params.expect(user: [ 
+        
       ])
     end
-
-    def set_department
-      @department = Department.find(params[:department_id])
-    end
-
-    def user_params
-      params.expect(user: [ :name ])
-    end
-
 end
 
 
