@@ -1,0 +1,9 @@
+<%= form_with model: department do |form| %>
+  <div>
+    <%= form.label :name, "部署名" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.submit "保存する" %>
+  </div>
+<% end %>

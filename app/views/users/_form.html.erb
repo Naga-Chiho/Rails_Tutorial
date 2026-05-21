@@ -27,7 +27,7 @@
 
   <div>
     <%= form.label :index_users_on_department_id, "部署" %>
-    <%= form.select :gender, ["PD1", "PD2", "Iot", "データマネジメント"], include_blank: "選択してください" %>
+    <%= form.collection_select :department_id, Department.all, :id, :name, { prompt: "部署を選択してください" } %>
   </div>
 
   <div>

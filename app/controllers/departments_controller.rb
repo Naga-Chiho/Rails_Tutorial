@@ -1,6 +1,4 @@
-class DepartmentsController < ApplicationController
-    before_action :set_department
-    
+class DepartmentsController < ApplicationController  
     def index
         @departments = Department.all
     end
@@ -9,9 +7,12 @@ class DepartmentsController < ApplicationController
         @department = Department.new
     end
 
+      def show
+        @department = Department.find(params[:id])
+      end
+
     def create
         @department = Department.new(department_params)
-
         if @department.save
             redirect_to @department
         else
@@ -24,22 +25,24 @@ class DepartmentsController < ApplicationController
     end
 
     def update
+        @department = Department.find(params[:id])
         if @department.update(department_params) 
             redirect_to @department 
         else
-            puts @department.errors.full_messages
             render :edit, status: :unprocessable_entity
         end
     end
 
-    private
-   
-    def set_department
+    def destroy
         @department = Department.find(params[:id])
+        @department.destroy
+        redirect_to departments_path
     end
 
-    # 追加: 部署用のStrong Parameters
+
+    private
+   
     def department_params
-        params.require(:department).permit(:name)
+       params.expect(department: [:name])
     end
 end

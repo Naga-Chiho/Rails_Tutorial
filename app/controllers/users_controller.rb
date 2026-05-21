@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      puts @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
@@ -59,9 +58,6 @@ class UsersController < ApplicationController
         :address5, 
         :birthday,
       )
-      params.expect(user: [ 
-        
-      ])
     end
 end
 

@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   # この子あれば一発よ
   resources :users
-  resources :department
+  resources :departments
 end
