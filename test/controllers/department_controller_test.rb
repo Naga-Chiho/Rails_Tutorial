@@ -30,6 +30,14 @@ class DepartmentControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "部署情報削除" do
+    @department = departments(:development1)
+    assert_difference("User.count", -1) do
+      delete department_url(@department)
+    end
+    assert_redirected_to departments_path
+  end
+
   test "部署情報詳細表示" do
     @department = departments(:development1)
     get department_url(@department)
