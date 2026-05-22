@@ -1,5 +1,11 @@
 <h1><%= @department.name %></h1>
 
+  <ul>
+    <% @department.users.each do |user| %>
+        <p><%= user.name %></p>
+    <% end %>
+  </ul>
+
 <%= link_to "一覧に戻る", departments_path %>
 <%= link_to "編集する", edit_department_path(@department) %>
 <%= button_to "削除する", @department, method: :delete%>
