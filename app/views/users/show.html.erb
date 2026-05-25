@@ -18,6 +18,10 @@
     <td><%= @user.gender %></td>
   </tr>
   <tr>
+    <td><strong>部署</strong></td>
+    <td><%= @user.department.name %></td>
+  </tr>
+  <tr>
     <td><strong>電話番号</strong></td>
     <td><%= @user.phone %></td>
   </tr>
@@ -61,4 +65,6 @@
 
 <%= link_to "一覧に戻る", users_path %>
 <%= link_to "編集する", edit_user_path(@user) %>
-<%= button_to "削除する", @user, method: :delete%>
+<%= button_to "削除", @user, method: :delete, data: {
+    turbo_confirm: "本当に削除しますか？" 
+  } %>

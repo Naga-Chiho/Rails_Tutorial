@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    
     if @user.save
       redirect_to @user
     else
@@ -35,17 +36,16 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      puts @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
 
   private
     def user_params
-
-      params.expect(user: [ 
+      params.expect(user: [
         :name, 
-        :furigana, 
+        :furigana,
+        :department_id,
         :gender, 
         :phone, 
         :mobile_phone, 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
         :address3, 
         :address4, 
         :address5, 
-        :birthday 
+        :birthday
       ])
     end
 end
