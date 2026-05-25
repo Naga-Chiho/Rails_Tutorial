@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(
+      params.expect(user: [
         :name, 
         :furigana,
         :department_id,
@@ -56,8 +56,8 @@ class UsersController < ApplicationController
         :address3, 
         :address4, 
         :address5, 
-        :birthday,
-      )
+        :birthday
+      ])
     end
 end
 
