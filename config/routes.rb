@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # delete "/users/:id", to: "users#destroy"
 
   # この子あれば一発よ
-  resources :departments, :users, :skills
+  resources :departments
+  resources :users
+  resources :skills
 end
