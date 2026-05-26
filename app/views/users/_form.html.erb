@@ -111,6 +111,11 @@
   </div>
 
   <div>
+    <%= form.label :index_user_skills_on_user_id, "スキル" %>
+    <%= form.collection_check_boxes :skill_ids, Skill.all, :id, :name, { prompt: "スキルを選択してください" } %>
+  </div>
+
+  <div>
     <%= form.submit "保存する" %>
   </div>
 <% end %>

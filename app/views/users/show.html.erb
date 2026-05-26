@@ -61,6 +61,16 @@
     <td><strong>生年月日</strong></td>
     <td><%= @user.birthday %></td>
   </tr>
+    <tr>
+    <td><strong>スキル</strong></td>
+    <td> 
+      <ul> 
+        <% @user.skills.each do |skill| %>
+          <li><%= skill.name %></li>
+        <% end %>
+      </ul>
+    </td> 
+  </tr>
 </table>
 
 <%= link_to "一覧に戻る", users_path %>
