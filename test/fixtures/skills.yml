@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+skill1:
+  name : 基本情報
+ 
+skill2:
+  name : ねこ検定
+
+
+     

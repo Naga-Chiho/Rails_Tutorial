@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   belongs_to :department
-  has_many :users_skills, dependent: :restrict_with_error
+  has_many :users_skills, dependent: :destroy
   has_many :skills, through: :users_skills
 
   validates :name, presence: { message: "名前は必須です" }
