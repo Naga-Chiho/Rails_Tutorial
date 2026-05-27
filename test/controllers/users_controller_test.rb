@@ -20,6 +20,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
           name: "岩間匠",
           furigana: "イワマタクミ",
           gender: "男",
+          department_id: departments(:development1).id,
           phone: "086-749-2481",
           mobile_phone: "090-5535-0024",
           email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
@@ -29,7 +30,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
           address3: "東町",
           address4: "2-19-18",
           address5: "東町アパート316",
-          birthday: "1987/04/16"
+          birthday: "1987/04/16",
+          skill_ids: [skills(:skill1).id, skills(:skill2).id]
         } 
       }
     end
@@ -63,6 +65,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         name: "岩間匠",
         furigana: "イワマタクミ",
         gender: "男",
+        department_id: departments(:development2).id,
         phone: "086-749-2481",
         mobile_phone: "090-5535-0024",
         email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
@@ -72,7 +75,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         address3: "東町",
         address4: "2-19-18",
         address5: "東町アパート316",
-        birthday: "1987/04/16"
+        birthday: "1987/04/16",
+        skill_ids: [skills(:skill4).id]
       } 
     }
     assert_redirected_to user_url(@user)
@@ -80,6 +84,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "岩間匠", @user.name
     assert_equal "イワマタクミ", @user.furigana
     assert_equal "男", @user.gender
+    assert_equal departments(:development2).id, @user.department_id
     assert_equal "086-749-2481", @user.phone
     assert_equal "090-5535-0024", @user.mobile_phone
     assert_equal "cwiwdlnwtakumi56147@ipun.jjn.rsg", @user.email
@@ -90,5 +95,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "2-19-18", @user.address4
     assert_equal "東町アパート316", @user.address5
     assert_equal "1987-04-16", @user.birthday.to_s
+    assert_equal [skills(:skill4).id], @user.skill_ids
   end
 end
