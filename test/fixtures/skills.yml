@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-skill1:
+kihon_joho:
   name : 基本情報
  
-skill2:
+neko_kentei:
   name : ねこ検定
 
-skill3:
+aroma_kentei:
   name : アロマ検定
 
-skill4:
+boki:
   name : 簿記
 
      
