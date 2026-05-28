@@ -12,12 +12,12 @@ class User < ApplicationRecord
   validates :gender, presence: { message: "性別は必須です" }
 
   validates :phone, presence: { message: "電話番号は必須です" }
-  validates :phone, presence: true, format: { with: /\A0\d{2,4}-\d{1,4}-\d{1,4}\z/, message: "ハイフンありの電話番号でお願いします" }
+  validates :phone, presence: true, format: { with: /\A0\d{1,4}-\d{1,4}-\d{1,4}\z/, message: "ハイフンありの電話番号でお願いします" }
 
-  validates :mobile_phone, format: { with: /\A(070|080|090)-\d{4}-\d{4}\z/, message: "ハイフンありの携帯番号でお願いします" }
+  validates :mobile_phone, allow_blank: true, format: { with: /\A(070|080|090)-\d{4}-\d{4}\z/, message: "ハイフンありの携帯番号でお願いします" }
 
   validates :email, presence: { message: "メールは必須です" }
-  validates :email, presence: true, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
+  validates :email, presence: true, format: { with: /\A[a-zA-Z0-9._%+-=]+@[a-zA-Z0-9.-=]+\.[a-zA-Z]{2,}\z/ }
 
   validates :postal_code, presence: { message: "郵便番号は必須です" }
   validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "ハイフンありでお願いします" }
