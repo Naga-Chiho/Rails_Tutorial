@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, length: { in: 2..50 ,message: "文字数が不適切です"}
 
   validates :furigana, presence: { message: "フリガナは必須です" }
-  validates :furigana, format: { with: /\A[ァ-ヴー]+\z/,message: "カタカナのみ使用できます" }
+  validates :furigana, format: { with: /\A[ァ-ヴー　 ]+\z/, message: "カタカナとスペースのみ使用できます" }
 
   validates :gender, presence: { message: "性別は必須です" }
 
