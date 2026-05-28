@@ -15,6 +15,7 @@ test_data_1:
   address4 : 3-2
   address5 :
   birthday : 1998/01/10
+  skills: kihon_joho,aroma_kentei
   
 
 test_data_2:
@@ -32,6 +33,7 @@ test_data_2:
   address4 : 4-14
   address5 : ときわグリーン105
   birthday : 1946/04/02
+  skills: neko_kentei,skill4
 
 
      

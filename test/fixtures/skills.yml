@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+kihon_joho:
+  name : 基本情報
+ 
+neko_kentei:
+  name : ねこ検定
+
+aroma_kentei:
+  name : アロマ検定
+
+boki:
+  name : 簿記
+
+     

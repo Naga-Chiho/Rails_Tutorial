@@ -56,7 +56,8 @@ class UsersController < ApplicationController
         :address3, 
         :address4, 
         :address5, 
-        :birthday
+        :birthday,
+        skill_ids:[],
       ])
     end
 end
