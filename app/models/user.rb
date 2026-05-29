@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :phone, presence: { message: "電話番号は必須です" }
   validates :phone, presence: true, format: { with: /\A0\d{1,4}-\d{1,4}-\d{4}\z/, message: "ハイフンありの電話番号でお願いします" }
 
-  validates :mobile_phone, allow_blank: true, format: { with: /\A(070|080|090)-\d{4}-\d{4}\z/, message: "ハイフンありの携帯番号でお願いします" }
+  validates :mobile_phone, allow_nil: true, format: { with: /\A(070|080|090)-\d{4}-\d{4}\z/, message: "ハイフンありの携帯番号でお願いします" }
 
   validates :email, presence: { message: "メールは必須です" }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "正しいメールアドレスの形式で入力してください" }
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   validates :address4, presence: { message: "番地は必須です" }
   validates :address4,length: { maximum: 100, message: "番地が長すぎます" }
 
-  validates :address5, length: { maximum: 100, message: "建物名・部屋番号が長すぎます" }, allow_blank: true
+  validates :address5, length: { maximum: 100, message: "建物名・部屋番号が長すぎます" }, allow_nil: true
 
   validates :birthday, presence: { message: "誕生日は必須です" }
   validates_each :birthday do |record, attr, value|
