@@ -4,34 +4,49 @@ class User < ApplicationRecord
   has_many :skills, through: :users_skills
 
   validates :name, presence: { message: "名前は必須です" }
-  validates :name, length: { in: 2..50 ,message: "文字数が不適切です"}
+  validates :name, length: { in: 1..50 ,message: "文字数が不適切です"}
 
   validates :furigana, presence: { message: "フリガナは必須です" }
-  validates :furigana, format: { with: /\A[ァ-ヴー　 ]+\z/, message: "カタカナとスペースのみ使用できます" }
+  validates :furigana, length: { maximum: 50, message: "文字数が長すぎます" }
+  validates :furigana, format: { with: /\A[ァ-ヶー・ｦ-ﾟ　 ]+\z/, message: "フリガナはカタカナ（全角・半角）とスペースのみ使用できます" }
 
   validates :gender, presence: { message: "性別は必須です" }
 
   validates :phone, presence: { message: "電話番号は必須です" }
-  validates :phone, presence: true, format: { with: /\A0\d{1,4}-\d{1,4}-\d{1,4}\z/, message: "ハイフンありの電話番号でお願いします" }
+  validates :phone, presence: true, format: { with: /\A0\d{1,4}-\d{1,4}-\d{4}\z/, message: "ハイフンありの電話番号でお願いします" }
 
   validates :mobile_phone, allow_blank: true, format: { with: /\A(070|080|090)-\d{4}-\d{4}\z/, message: "ハイフンありの携帯番号でお願いします" }
 
   validates :email, presence: { message: "メールは必須です" }
-  validates :email, presence: true, format: { with: /\A[a-zA-Z0-9._%+-=]+@[a-zA-Z0-9.-=]+\.[a-zA-Z]{2,}\z/ }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "正しいメールアドレスの形式で入力してください" }
 
   validates :postal_code, presence: { message: "郵便番号は必須です" }
   validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "ハイフンありでお願いします" }
 
   validates :address1, presence: { message: "都道府県は必須です" }
+
   validates :address2, presence: { message: "市区町村は必須です" }
+  validates :address2, length: { maximum: 100, message: "市区町村が長すぎます" }
+
   validates :address3, presence: { message: "町名・丁目は必須です" }
+  validates :address3, length: { maximum: 100, message: "町名・丁目が長すぎます" }
+
   validates :address4, presence: { message: "番地は必須です" }
+  validates :address4,length: { maximum: 100, message: "番地が長すぎます" }
+
+  validates :address5, length: { maximum: 100, message: "建物名・部屋番号が長すぎます" }, allow_blank: true
 
   validates :birthday, presence: { message: "誕生日は必須です" }
   validates_each :birthday do |record, attr, value|
     record.errors.add(attr, "未来の日付は選択できません") if value > Date.today
   end
 
+  enum :gender, {
+    男性: "男性",
+    女性: "女性",
+    その他: "その他",
+    回答なし: "回答なし"
+  }, validate: true
 
   enum :address1, {
     北海道: "北海道",
