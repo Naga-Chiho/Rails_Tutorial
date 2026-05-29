@@ -12,7 +12,7 @@ namespace :import do
     CSV.foreach("/workspace/db/personal_infomation.csv", headers: true) do |row|
       department = Department.find_by(name: row["busho_name"])
 
-      User.create!(
+      User.create(
         name:         row["namae"],
         furigana:     row["rubi"],
         gender:       row["seibetu"],
