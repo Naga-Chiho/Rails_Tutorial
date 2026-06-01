@@ -1,16 +1,14 @@
 require 'csv'
 
-# 名前空間
 namespace :import do
-
-  # タスクの説明 desc => description（説明）
   desc "ユーザーの取得"
+  
+  task :users, [:file_path] => :environment do |t, args|
+    csv_path = args[:file_path]
+    departments = Department.all.index_by(&:name)
 
-  # task_name => タスクの名前
-  task users: :environment do
-    # 実行したい処理を記述する場所
-    CSV.foreach("/workspace/db/personal_infomation.csv", headers: true) do |row|
-      department = Department.find_by(name: row["busho_name"])
+    CSV.foreach(csv_path, headers: true) do |row|
+      department = departments[row["busho"]]
 
       User.create(
         name:         row["namae"],
