@@ -7,7 +7,7 @@ namespace :import do
     csv_path = args[:file_path]
     
     unless File.exist?(csv_path)
-      puts "エラー: ファイルが見つかりません (#{csv_path})"
+      puts "ファイルが見つかりません (#{csv_path})"
       exit
     end
 
