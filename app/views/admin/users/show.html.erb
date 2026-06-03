@@ -1,0 +1,80 @@
+<h1><%= @user.name %></h1>
+
+<table>
+  <tr>
+    <th>項目</th>
+    <th>内容</th>
+  </tr>
+  <tr>
+    <td><strong>氏名</strong></td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td><strong>フリガナ</strong></td>
+    <td><%= @user.furigana %></td>
+  </tr>
+  <tr>
+    <td><strong>性別</strong></td>
+    <td><%= @user.gender %></td>
+  </tr>
+  <tr>
+    <td><strong>部署</strong></td>
+    <td><%= @user.department.name %></td>
+  </tr>
+  <tr>
+    <td><strong>電話番号</strong></td>
+    <td><%= @user.phone %></td>
+  </tr>
+  <tr>
+    <td><strong>携帯電話番号</strong></td>
+    <td><%= @user.mobile_phone %></td>
+  </tr>
+  <tr>
+    <td><strong>メールアドレス</strong></td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td><strong>郵便番号</strong></td>
+    <td><%= @user.postal_code %></td>
+  </tr>
+  <tr>
+    <td><strong>住所1</strong></td>
+    <td><%= @user.address1 %></td>
+  </tr>
+  <tr>
+    <td><strong>住所2</strong></td>
+    <td><%= @user.address2 %></td>
+  </tr>
+  <tr>
+    <td><strong>住所3</strong></td>
+    <td><%= @user.address3 %></td>
+  </tr>
+  <tr>
+    <td><strong>住所4</strong></td>
+    <td><%= @user.address4 %></td>
+  </tr>
+  <tr>
+    <td><strong>住所5</strong></td>
+    <td><%= @user.address5 %></td>
+  </tr>
+  <tr>
+    <td><strong>生年月日</strong></td>
+    <td><%= @user.birthday %></td>
+  </tr>
+    <tr>
+    <td><strong>スキル</strong></td>
+    <td> 
+      <ul> 
+        <% @user.skills.each do |skill| %>
+          <li><%= skill.name %></li>
+        <% end %>
+      </ul>
+    </td> 
+  </tr>
+</table>
+
+<%= link_to "一覧に戻る", admin_users_path %>
+<%= link_to "編集する", edit_admin_user_path(@user) %>
+<%= button_to "削除",  [:admin, @user], method: :delete, data: {
+    turbo_confirm: "本当に削除しますか？" 
+  } %>
