@@ -1,0 +1,15 @@
+<h1>部署一覧</h1>
+<h3>ここは管理画面です</h3>
+
+<div id="departments">
+  <%= link_to "新規作成", new_admin_department_path %>
+
+  <ul>
+    <% @departments.each do |department| %>
+      <li style="padding-bottom: 12px;">
+        <h3><%= department.name %></h3>
+        <%= link_to "詳細", [:admin, department] %>
+      </li>
+    <% end %>
+  </ul>
+</div>
