@@ -1,0 +1,12 @@
+<h1>Skills</h1>
+
+<div id="skills">
+  <%= link_to "新規作成", new_admin_skill_path %>
+
+  <% @skills.each do |skill| %>
+      <li style="padding-bottom: 12px;">
+        <h3><%= skill.name %></h3>
+        <%= link_to "詳細",  [:admin, skill]  %>
+      </li>
+  <% end %>
+</div>
