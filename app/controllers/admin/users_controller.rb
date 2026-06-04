@@ -52,13 +52,13 @@ module Admin
           :mobile_phone, 
           :email, 
           :postal_code, 
-          :address1, 
-          :address2, 
-          :address3, 
-          :address4, 
-          :address5, 
-          :birthday,
-          skill_ids:[],
+          :prefecture, 
+          :city, 
+          :town, 
+          :street, 
+          :building,
+          :birthday, 
+          skill_ids: []
         ])
       end
   end
