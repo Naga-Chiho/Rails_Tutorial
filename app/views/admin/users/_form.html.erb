@@ -19,7 +19,7 @@
 
   <div>
     <%= form.label :gender, "性別" %>
-    <%= form.select :gender, ["男性", "女性", "その他"], include_blank: "選択してください" %>
+    <%= form.select :gender, ["男", "女", "その他"], include_blank: "選択してください" %>
     <% if form.object.errors[:gender].any? %>
        <p><%= form.object.errors.full_messages_for(:gender).first %></p>
     <% end %>

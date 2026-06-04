@@ -19,7 +19,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
           name: "岩間匠",
           furigana: "イワマタクミ",
           gender: "男",
-          department_id: departments(:pd1).id,
+          department_id: departments(:pd3).id,
           phone: "086-749-2481",
           mobile_phone: "090-5535-0024",
           email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
@@ -34,6 +34,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         } 
       }
     end
+    puts response.body 
     assert_redirected_to admin_user_url(User.last)
   end  
 
@@ -64,7 +65,7 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         name: "岩間匠",
         furigana: "イワマタクミ",
         gender: "男",
-        department_id: departments(:pd2).id,
+        department_id: departments(:pd4).id,
         phone: "086-749-2481",
         mobile_phone: "090-5535-0024",
         email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
@@ -78,13 +79,14 @@ class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
         skill_ids: [skills(:boki).id]
       } 
     }
+    puts response.body 
     assert_redirected_to admin_user_url(@user)
     
     @user.reload
     assert_equal "岩間匠", @user.name
     assert_equal "イワマタクミ", @user.furigana
     assert_equal "男", @user.gender
-    assert_equal departments(:pd2).id, @user.department_id
+    assert_equal departments(:pd4).id, @user.department_id
     assert_equal "086-749-2481", @user.phone
     assert_equal "090-5535-0024", @user.mobile_phone
     assert_equal "cwiwdlnwtakumi56147@ipun.jjn.rsg", @user.email

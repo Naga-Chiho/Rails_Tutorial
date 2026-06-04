@@ -30,7 +30,7 @@ class Admin::DepartmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "#destroy 部署削除動作確認" do
-    @department = departments(:pd3)
+    @department = departments(:pd7)
     assert_difference("Department.count", -1) do
       delete admin_department_url(@department)
     end
