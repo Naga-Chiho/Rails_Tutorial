@@ -9,11 +9,11 @@ test_data_1:
   mobile_phone : 080-2422-3182
   email : aoto798@hdhq.zjxn.jt
   postal_code : 409-2524
-  address1 : 山梨県
-  address2 : 南巨摩郡身延町
-  address3 : 身延
-  address4 : 3-2
-  address5 :
+  prefecture : 山梨県
+  city : 南巨摩郡身延町
+  town : 身延
+  street : 3-2
+  building :
   birthday : 1998/01/10
   skills: kihon_joho,aroma_kentei
   
@@ -27,11 +27,11 @@ test_data_2:
   mobile_phone : 
   email : mitsuhikoishiyama@auplhztl.be
   postal_code : 510-0834
-  address1 : 三重県
-  address2 : 四日市市
-  address3 : ときわ
-  address4 : 4-14
-  address5 : ときわグリーン105
+  prefecture : 三重県
+  city : 四日市市
+  town : ときわ
+  street : 4-14
+  building : ときわグリーン105
   birthday : 1946/04/02
   skills: neko_kentei
 
