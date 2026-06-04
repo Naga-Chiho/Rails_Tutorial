@@ -23,18 +23,18 @@ class User < ApplicationRecord
   validates :postal_code, presence: { message: "郵便番号は必須です" }
   validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: "ハイフンありでお願いします" }
 
-  validates :address1, presence: { message: "都道府県は必須です" }
+  validates :prefecture, presence: { message: "都道府県は必須です" }
 
-  validates :address2, presence: { message: "市区町村は必須です" }
-  validates :address2, length: { maximum: 100, message: "市区町村が長すぎます" }
+  validates :city, presence: { message: "市区町村は必須です" }
+  validates :city, length: { maximum: 100, message: "市区町村が長すぎます" }
 
-  validates :address3, presence: { message: "町名・丁目は必須です" }
-  validates :address3, length: { maximum: 100, message: "町名・丁目が長すぎます" }
+  validates :town, presence: { message: "町名・丁目は必須です" }
+  validates :town, length: { maximum: 100, message: "町名・丁目が長すぎます" }
 
-  validates :address4, presence: { message: "番地は必須です" }
-  validates :address4,length: { maximum: 100, message: "番地が長すぎます" }
+  validates :street, presence: { message: "番地は必須です" }
+  validates :street,length: { maximum: 100, message: "番地が長すぎます" }
 
-  validates :address5, length: { maximum: 100, message: "建物名・部屋番号が長すぎます" }, allow_nil: true
+  validates :building, length: { maximum: 100, message: "建物名・部屋番号が長すぎます" }, allow_nil: true
 
   validates :birthday, presence: { message: "誕生日は必須です" }
   validates_each :birthday do |record, attr, value|
@@ -47,7 +47,7 @@ class User < ApplicationRecord
     その他: "その他",
   }, validate: true
 
-  enum :address1, {
+  enum :prefecture, {
     北海道: "北海道",
     青森県: "青森県",
     岩手県: "岩手県",
