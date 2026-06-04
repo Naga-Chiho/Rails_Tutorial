@@ -1,5 +1,5 @@
 module Admin
-    class SkillsController < AdminController 
+    class SkillsController < ApplicationController
         def index
             @skills = Skill.all
         end

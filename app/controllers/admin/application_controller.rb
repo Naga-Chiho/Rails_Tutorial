@@ -1,6 +1,6 @@
 module Admin
-  class AdminController < ActionController::Base
+  class ApplicationController < ActionController::Base
     
-    layout 'admin'
+    layout 'admin/application'
   end
 end

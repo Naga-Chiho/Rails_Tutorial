@@ -1,5 +1,5 @@
 module Admin    
-    class DepartmentsController < AdminController 
+    class DepartmentsController < ApplicationController
         def index
             @departments = Department.all
         end

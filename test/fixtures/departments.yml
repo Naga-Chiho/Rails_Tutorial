@@ -1,16 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-pd3:
-  name : PD3
+pd1:
+  name : PD1
  
-pd4:
-  name : PD4
-
-pd5:
-  name : PD5
-
-pd6:
-  name : PD6
+pd2:
+  name : PD2
 
 pd7:
   name : PD7

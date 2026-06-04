@@ -8,7 +8,7 @@ class DepartmentControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "#show 部署詳細画面の表示" do
-    @department = departments(:pd3)
+    @department = departments(:pd1)
     get department_url(@department)
     assert_response :success
   end

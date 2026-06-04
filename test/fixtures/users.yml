@@ -3,7 +3,7 @@
 test_data_1:
   name : 三井碧透
   furigana : ミツイアオト
-  department: pd3
+  department: pd1
   gender  : 男
   phone : 0555-39-4957
   mobile_phone : 080-2422-3182
@@ -21,7 +21,7 @@ test_data_1:
 test_data_2:
   name : 石山光彦
   furigana : ミイシヤマミツヒコ
-  department: pd4
+  department: pd2
   gender  : 男
   phone : 059-67-1107
   mobile_phone : 
