@@ -10,9 +10,16 @@ module Admin
 
     def show
       @user = User.find(params[:id])
+      send_data @user.image, type: 'image/jpeg', disposition: 'inline'
     end
 
     def create
+      upload_file = user_params[:upload_file]
+
+      if upload_file[:image] != nil
+        upload_file[:image] = upload_file[:image].read
+      end
+
       @user = User.new(user_params)
       
       if @user.save
@@ -33,7 +40,14 @@ module Admin
     end
 
     def update
+      update_file = user_params
+
+      if upload_file[:image] != nil
+        update_file[:image] = update_file[:image].read
+      end
+
       @user = User.find(params[:id])
+
       if @user.update(user_params)
         redirect_to [:admin, @user]
       else
@@ -57,6 +71,7 @@ module Admin
           :town, 
           :street, 
           :building,
+          :image,
           :birthday, 
           skill_ids: []
         ])
