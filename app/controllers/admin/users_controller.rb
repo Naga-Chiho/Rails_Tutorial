@@ -46,11 +46,11 @@ module Admin
     def update
       update_file = user_params
 
-      if upload_file[:image] != nil
+      if update_file[:image] != nil
         update_file[:image] = update_file[:image].read
       end
 
-      @user = User.find(update_file[:id])
+      @user = User.find(params[:id])
 
       if @user.update(update_file)
         redirect_to [:admin, @user]
