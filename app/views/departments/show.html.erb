@@ -7,7 +7,3 @@
   </ul>
 
 <%= link_to "一覧に戻る", departments_path %>
-<%= link_to "編集する", edit_department_path(@department) %>
-<%= button_to "削除", @department, method: :delete, data: {
-    turbo_confirm: "本当に削除しますか？" 
-  } %>

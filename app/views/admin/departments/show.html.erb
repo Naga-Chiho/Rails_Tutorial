@@ -1,0 +1,13 @@
+<h1><%= @department.name %></h1>
+
+  <ul>
+    <% @department.users.each do |user| %>
+        <p><%= user.name %></p>
+    <% end %>
+  </ul>
+
+<%= link_to "一覧に戻る", admin_departments_path %>
+<%= link_to "編集する", edit_admin_department_path(@department) %>
+<%= button_to "削除", [:admin, @department], method: :delete, data: {
+    turbo_confirm: "本当に削除しますか？" 
+  } %>

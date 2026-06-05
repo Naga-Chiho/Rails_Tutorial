@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
-  # get "up" => "rails/health#show", as: :rails_health_check
-  # get "/users", to: "users#index"
+  namespace :admin do
+    resources :departments
+    resources :users
+    resources :skills
+  end
 
-  # get "/users/new", to: "users#new"
-  # post "/users", to: "users#create"
-
-  # get "/users/:id/edit", to: "users#edit"
-  # patch "/users/:id", to: "users#update"
-  # put "/users/:id", to: "users#update"
-
-  # delete "/users/:id", to: "users#destroy"
-
-  # この子あれば一発よ
-  resources :departments
-  resources :users
-  resources :skills
+    resources :departments, only: [:index , :show]
+    resources :users, only: [:index , :show]
+    resources :skills, only: [:index , :show]
 end

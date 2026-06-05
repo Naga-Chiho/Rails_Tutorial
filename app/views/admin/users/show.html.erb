@@ -73,4 +73,8 @@
   </tr>
 </table>
 
-<%= link_to "一覧に戻る", users_path %>
+<%= link_to "一覧に戻る", admin_users_path %>
+<%= link_to "編集する", edit_admin_user_path(@user) %>
+<%= button_to "削除",  [:admin, @user], method: :delete, data: {
+    turbo_confirm: "本当に削除しますか？" 
+  } %>

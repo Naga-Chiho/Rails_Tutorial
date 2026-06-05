@@ -1,0 +1,7 @@
+<h1><%= @skill.name %></h1>
+
+<%= link_to "一覧に戻る", admin_skills_path %>
+<%= link_to "編集する", edit_admin_skill_path(@skill) %>
+<%= button_to "削除", [:admin, @skill], method: :delete, data: {
+    turbo_confirm: "本当に削除しますか？" 
+  } %>

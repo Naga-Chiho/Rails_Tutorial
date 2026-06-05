@@ -42,10 +42,9 @@ class User < ApplicationRecord
   end
 
   enum :gender, {
-    男性: "男性",
-    女性: "女性",
+    男: "男",
+    女: "女",
     その他: "その他",
-    回答なし: "回答なし"
   }, validate: true
 
   enum :address1, {
