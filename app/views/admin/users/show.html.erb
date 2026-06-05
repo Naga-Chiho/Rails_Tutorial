@@ -63,7 +63,13 @@
   </tr>
   <tr>
     <td><strong>画像</strong></td>
-    <td><%= image_tag show_image_admin_user_path(@user) %></td>
+    <td>
+      <% if @user.image.present? %>
+        <%= image_tag show_image_admin_user_path(@user), size: "200x200" %>
+      <% else %>
+        画像なし
+      <% end %>
+    </td>
   </tr>
     <tr>
     <td><strong>スキル</strong></td>
