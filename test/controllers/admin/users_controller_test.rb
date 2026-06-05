@@ -25,11 +25,11 @@ module Admin
             mobile_phone: "090-5535-0024",
             email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
             postal_code: "710-0053",
-            address1: "岡山県",
-            address2: "倉敷市", 
-            address3: "東町",
-            address4: "2-19-18",
-            address5: "東町アパート316",
+            prefecture: "岡山県",
+            city: "倉敷市", 
+            town: "東町",
+            street: "2-19-18",
+            building: "東町アパート316",
             birthday: "1987/04/16",
             skill_ids: [skills(:kihon_joho).id, skills(:neko_kentei).id]
           } 
@@ -71,11 +71,11 @@ module Admin
           mobile_phone: "090-5535-0024",
           email: "cwiwdlnwtakumi56147@ipun.jjn.rsg",
           postal_code: "710-0053",
-          address1: "岡山県",
-          address2: "倉敷市", 
-          address3: "東町",
-          address4: "2-19-18",
-          address5: "東町アパート316",
+          prefecture: "岡山県",
+          city: "倉敷市", 
+          town: "東町",
+          street: "2-19-18",
+          building: "東町アパート316",
           birthday: "1987/04/16",
           skill_ids: [skills(:boki).id]
         } 
@@ -92,11 +92,11 @@ module Admin
       assert_equal "090-5535-0024", @user.mobile_phone
       assert_equal "cwiwdlnwtakumi56147@ipun.jjn.rsg", @user.email
       assert_equal "710-0053", @user.postal_code
-      assert_equal "岡山県", @user.address1
-      assert_equal "倉敷市", @user.address2
-      assert_equal "東町", @user.address3
-      assert_equal "2-19-18", @user.address4
-      assert_equal "東町アパート316", @user.address5
+      assert_equal "岡山県", @user.prefecture
+      assert_equal "倉敷市", @user.city
+      assert_equal "東町", @user.town
+      assert_equal "2-19-18", @user.street
+      assert_equal "東町アパート316", @user.building
       assert_equal "1987-04-16", @user.birthday.to_s
       assert_equal [skills(:boki).id], @user.skill_ids
     end

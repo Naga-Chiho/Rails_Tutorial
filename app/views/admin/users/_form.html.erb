@@ -63,42 +63,42 @@
   </div>
 
   <div>
-   <%= form.label :address1, "都道府県" %>
-   <%= form.select :address1, User.address1s.keys %>
-    <% if form.object.errors[:address1].any? %>
-       <p><%= form.object.errors.full_messages_for(:address1).first %></p>
+   <%= form.label :prefecture, "都道府県" %>
+   <%= form.select :prefecture, User.prefectures.keys %>
+    <% if form.object.errors[:prefecture].any? %>
+       <p><%= form.object.errors.full_messages_for(:prefecture).first %></p>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :address2, "市区町村" %>
-    <%= form.text_field :address2 %>
-    <% if form.object.errors[:address2].any? %>
-       <p><%= form.object.errors.full_messages_for(:address2).first %></p>
+    <%= form.label :city, "市区町村" %>
+    <%= form.text_field :city %>
+    <% if form.object.errors[:city].any? %>
+       <p><%= form.object.errors.full_messages_for(:city).first %></p>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :address3, "町名・丁目" %>
-    <%= form.text_field :address3 %>
-    <% if form.object.errors[:address3].any? %>
-       <p><%= form.object.errors.full_messages_for(:address3).first %></p>
+    <%= form.label :town, "町名・丁目" %>
+    <%= form.text_field :town %>
+    <% if form.object.errors[:town].any? %>
+       <p><%= form.object.errors.full_messages_for(:town).first %></p>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :address4, "番地" %>
-    <%= form.text_field :address4 %>
-    <% if form.object.errors[:address4].any? %>
-       <p><%= form.object.errors.full_messages_for(:address4).first %></p>
+    <%= form.label :street, "番地" %>
+    <%= form.text_field :street %>
+    <% if form.object.errors[:street].any? %>
+       <p><%= form.object.errors.full_messages_for(:street).first %></p>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :address5, "建物名・部屋番号" %>
-    <%= form.text_field :address5 %>
-    <% if form.object.errors[:address5].any? %>
-       <p><%= form.object.errors.full_messages_for(:address5).first %></p>
+    <%= form.label :building, "建物名・部屋番号" %>
+    <%= form.text_field :building %>
+    <% if form.object.errors[:building].any? %>
+       <p><%= form.object.errors.full_messages_for(:building).first %></p>
     <% end %>
   </div>
 

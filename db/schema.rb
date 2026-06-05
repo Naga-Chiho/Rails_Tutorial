@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_26_045329) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_04_082622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,12 +27,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_26_045329) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "address1"
-    t.string "address2"
-    t.string "address3"
-    t.string "address4"
-    t.string "address5"
     t.date "birthday"
+    t.string "building"
+    t.string "city"
     t.datetime "created_at", null: false
     t.bigint "department_id", null: false
     t.string "email"
@@ -42,6 +39,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_26_045329) do
     t.string "name"
     t.string "phone"
     t.string "postal_code"
+    t.string "prefecture"
+    t.string "street"
+    t.string "town"
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_users_on_department_id"
   end
