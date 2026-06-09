@@ -18,10 +18,10 @@ module Admin
     end
 
     def create
-      upload_file = user_params
+      upload_file = user_params[:image]
 
-      if upload_file[:image] != nil
-        upload_file[:image] = upload_file[:image].read
+      if upload_file != nil
+        upload_file = upload_file.read
       end
 
       @user = User.new(upload_file)
@@ -44,15 +44,16 @@ module Admin
     end
 
     def update
-      update_file = user_params
+      update_file = user_params[:image]
 
-      if update_file[:image] != nil
-        update_file[:image] = update_file[:image].read
+      if update_file != nil
+        image_binary = update_file.read
+        update_params[:image] = image_binary
       end
 
       @user = User.find(params[:id])
 
-      if @user.update(update_file)
+      if @user.update(user_params)
         redirect_to [:admin, @user]
       else
         render :edit, status: :unprocessable_entity
