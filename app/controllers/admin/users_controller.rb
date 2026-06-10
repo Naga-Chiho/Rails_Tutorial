@@ -1,9 +1,11 @@
 module Admin  
-  class UsersController < ApplicationController
-    def index
-      @users = User.page(params[:page]).per(10)
-    end
+    class UsersController < ApplicationController
+      PER_PAGE = 10
 
+    def index
+      @users = User.page(params[:page]).per(PER_PAGE)
+    end
+    
     def new
       @user = User.new
     end
