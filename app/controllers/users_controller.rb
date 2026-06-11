@@ -4,16 +4,16 @@ class UsersController < ApplicationController
     @users = User.all
 
     if params[:name].present?
-      @users = User.where("name LIKE ?", params[:name])
+      @users = @users.where("name LIKE ?", params[:name])
     end
 
     if params[:prefecture].present?
-      @users = User.where("prefecture LIKE ?", params[:prefecture])
+      @users = @users.where("prefecture LIKE ?", params[:prefecture])
     end
 
     if params[:birthday] == "asc"
       @users = @users.order(birthday: :asc)
-    elsif params[:sort] == "desc"
+    elsif params[:birthday] == "desc"
       @users = @users.order(birthday: :desc)
     end
 
