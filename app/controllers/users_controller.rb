@@ -3,19 +3,19 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    if params[:name] != nil
+    if params[:name].present?
       @users = User.where("name LIKE ?", params[:name])
     end
 
-    if params[:prefecture] != nil
+    if params[:prefecture].present?
       @users = User.where("prefecture LIKE ?", params[:prefecture])
     end
 
-    if params[:birthday_asc] != nil
+    if params[:birthday_asc].present?
       @users = User.order(birthday: :ASC)
     end
 
-    if params[:birthday] != nil
+    if params[:birthday].present?
       @users = User.order(birthday: :DESC)
     end
 
