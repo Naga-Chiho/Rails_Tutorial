@@ -35,14 +35,13 @@ module Admin
     end
 
     def create
+      @user = User.new(user_params)
       upload_file = user_params[:image]
 
       if upload_file != nil
         upload_file = upload_file.read
       end
 
-      @user = User.new(upload_file)
-      
       if @user.save
         redirect_to [:admin, @user]
       else
