@@ -4,28 +4,18 @@
   <%= form_with url: users_path, method: :get do |form| %>
     <%= form.label :name, "名前:" %>
     <%= form.search_field :name %>
-    <%= form.submit "探す" %>
-  <% end %>
 
-  <%= form_with url: users_path, method: :get do |form| %>
     <%= form.label :prefecture, "都道府県:" %>
     <%= form.select :prefecture, User.prefectures.keys %>
-    <%= form.submit "探す" %>
-  <% end %>
+    
 
+    <%= form.label :birthday, "誕生日:" %>
+    <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], include_blank: "指定なし",  selected: params[:birthday] %>
 
-  <%= form_with url: users_path, method: :get do |form| %>
-    <%= form.label :birthday_asc, "誕生日(昇順):" %>
-    <%= form.checkbox :birthday_asc %>
-    <%= form.label :birthday_desc, "誕生日(降順):" %>
-    <%= form.checkbox :birthday_desc%>
-     <%= form.submit "絞り込む" %>
-  <% end %>
-
-  <%= form_with url: users_path, method: :get do |form| %>
     <%= form.label :per_page, "表示件数:" %>
-    <%= form.select :per_page, ["10","50","100"], selected: params[:per_page] || "100" %>
-    <%= form.submit "絞り込む" %>
+    <%= form.select :per_page, ["10","50","100"], include_blank: "指定なし", selected: params[:per_page] || "100" %>
+
+    <%= form.submit "探す" %>
   <% end %>
 
 
