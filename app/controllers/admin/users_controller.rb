@@ -5,7 +5,7 @@ module Admin
       @users = User.all
 
       if params[:name].present?
-        @users = @users.where("name LIKE ?", params[:name])
+        @users = @users.where("name LIKE ?", "%#{params[:name]}%")
       end
 
       if params[:prefecture].present?
