@@ -62,13 +62,14 @@ module Admin
     def update
       @user = User.find(params[:id])
       update_file = user_params[:image]
+      update_params = user_params
 
       if update_file != nil
         image_binary = update_file.read
-        user_params[:image] = image_binary
+        update_params[:image] = image_binary
       end
 
-      if @user.update(user_params)
+      if @user.update(update_params)
         redirect_to [:admin, @user]
       else
         render :edit, status: :unprocessable_entity
