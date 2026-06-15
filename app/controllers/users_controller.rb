@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user_prefecture = User.prefectures.keys
 
     if params[:name].present?
       @users = @users.search_name(params[:name])
