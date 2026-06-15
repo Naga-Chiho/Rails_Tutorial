@@ -60,14 +60,13 @@ module Admin
     end
 
     def update
+      @user = User.find(params[:id])
       update_file = user_params[:image]
 
       if update_file != nil
         image_binary = update_file.read
-        update_params[:image] = image_binary
+        user_params[:image] = image_binary
       end
-
-      @user = User.find(params[:id])
 
       if @user.update(user_params)
         redirect_to [:admin, @user]
