@@ -6,8 +6,7 @@
     <%= form.search_field :name %>
 
     <%= form.label :prefecture, "都道府県:" %>
-    <%= form.select :prefecture, User.prefectures.keys, include_blank: "指定なし" %>
-    
+    <%= form.select :prefecture, @user_prefecture, include_blank: "指定なし" %>
 
     <%= form.label :birthday, "誕生日:" %>
     <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], include_blank: "指定なし",  selected: params[:birthday] %>

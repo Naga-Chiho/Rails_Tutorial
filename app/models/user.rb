@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :users_skills, dependent: :destroy
   has_many :skills, through: :users_skills
 
+  scope :search_name, ->(find_name) { where("name LIKE ?", "%#{find_name}%") }
+  scope :search_prefecture, ->(find_prefecture) { where(prefecture: find_prefecture) }
+
   validates :name, presence: { message: "名前は必須です" }
   validates :name, length: { in: 1..50 ,message: "文字数が不適切です"}
 
