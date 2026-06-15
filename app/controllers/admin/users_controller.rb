@@ -3,14 +3,16 @@ module Admin
 
     def index
       @users = User.all
+      @param_name = params[:name]
+      @param_prefecture = params[:prefecture]
       @user_prefecture = User.prefectures.keys
 
-      if params[:name].present?
-        @users = @users.where("name LIKE ?", "%#{params[:name]}%")
+      if @param_name.present?
+        @users = @users.where("name LIKE ?", "%#{@param_name}%")
       end
 
-      if params[:prefecture].present?
-        @users = @users.where("prefecture LIKE ?", params[:prefecture])
+      if @param_prefecture.present?
+        @users = @users.search_prefecture(@param_prefecture)
       end
 
       if params[:birthday] == "asc"

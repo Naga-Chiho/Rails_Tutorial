@@ -2,14 +2,16 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @param_name = params[:name]
+    @param_prefecture = params[:prefecture]
     @user_prefecture = User.prefectures.keys
 
-    if params[:name].present?
-      @users = @users.search_name(params[:name])
+    if @param_name.present?
+      @users = @users.search_name(@param_name)
     end
 
-    if params[:prefecture].present?
-      @users = @users.search_prefecture(params[:prefecture])
+    if @param_prefecture.present?
+      @users = @users.search_prefecture(@param_prefecture)
     end
 
     if params[:birthday] == "asc"
