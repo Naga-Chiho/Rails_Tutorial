@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get    'login',  to: 'sessions#new'
+  post   'login',  to: 'sessions#create'               
+  delete 'logout', to: 'sessions#destroy' 
+
   namespace :admin do
     resources :departments
     resources :skills
@@ -12,4 +16,6 @@ Rails.application.routes.draw do
     resources :departments, only: [:index , :show]
     resources :users, only: [:index , :show]
     resources :skills, only: [:index , :show]
+
+    root "users#index" 
 end

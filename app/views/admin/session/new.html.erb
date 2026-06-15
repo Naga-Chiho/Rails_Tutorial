@@ -1,0 +1,12 @@
+<h1>管理画面 ログイン</h1>
+
+<%= form_with url: '/admin/login' do |form| %>
+  <div>
+    <%= form.label :email, "メールアドレス" %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit "ログイン" %>
+  </div>
+<% end %>
