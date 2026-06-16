@@ -1,16 +1,21 @@
 module Admin  
     class UsersController < ApplicationController
+    before_action :require_login
 
     def index
       @users = User.all
+      @param_name = params[:name]
+      @param_prefecture = params[:prefecture]
+      @param_birthday = params[:birthday]
+      @param_per_page = params[:per_page] 
       @user_prefecture = User.prefectures.keys
 
-      if params[:name].present?
-        @users = @users.where("name LIKE ?", "%#{params[:name]}%")
+      if @param_name.present?
+        @users = @users.search_name(@param_name)
       end
 
-      if params[:prefecture].present?
-        @users = @users.where("prefecture LIKE ?", params[:prefecture])
+      if @param_prefecture.present?
+        @users = @users.search_prefecture(@param_prefecture)
       end
 
       if params[:birthday] == "asc"

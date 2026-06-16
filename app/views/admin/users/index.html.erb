@@ -5,18 +5,22 @@
 
   <%= form_with url: admin_users_path, method: :get do |form| %>
     <%= form.label :name, "名前:" %>
-    <%= form.search_field :name, value: params[:name] %>
+    <%= form.search_field :name, value: @param_name %>
 
     <%= form.label :prefecture, "都道府県:" %>
-    <%= form.select :prefecture, @user_prefecture, { include_blank: "指定なし", selected: params[:prefecture] } %>
+    <%= form.select :prefecture, @user_prefecture, { include_blank: "指定なし", selected: @param_prefecture  } %>
 
     <%= form.label :birthday, "誕生日:" %>
-    <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], { include_blank: "指定なし", selected: params[:birthday] }, selected: params[:birthday] %>
+    <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], { include_blank: "指定なし", selected: @param_birthday }, selected: @param_birthday %>
 
     <%= form.label :per_page, "表示件数:" %>
-    <%= form.select :per_page, ["10","50","100"], { include_blank: "指定なし", selected: params[:per_page] }, selected: params[:per_page] || "100" %>
+    <%= form.select :per_page, ["10","50","100"], { include_blank: "指定なし", selected: @param_per_page }, selected: @param_per_page || "100" %>
 
     <%= form.submit "探す" %>
+  <% end %>
+
+  <% if session[:user_id] %>
+    <%= button_to 'ログアウト', '/admin/logout', method: :delete %>
   <% end %>
 
   <% @users.each do |user| %>
