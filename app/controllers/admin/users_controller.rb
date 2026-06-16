@@ -5,10 +5,12 @@ module Admin
       @users = User.all
       @param_name = params[:name]
       @param_prefecture = params[:prefecture]
+      @param_birthday = params[:birthday]
+      @param_per_page = params[:per_page] 
       @user_prefecture = User.prefectures.keys
 
       if @param_name.present?
-        @users = @users.where("name LIKE ?", "%#{@param_name}%")
+        @users = @users.search_name(@param_name)
       end
 
       if @param_prefecture.present?

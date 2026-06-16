@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
     @param_name = params[:name]
     @param_prefecture = params[:prefecture]
+    @param_birthday = params[:birthday]
     @user_prefecture = User.prefectures.keys
 
     if @param_name.present?

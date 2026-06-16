@@ -11,10 +11,10 @@
     <%= form.select :prefecture, @user_prefecture, { include_blank: "指定なし", selected: @param_prefecture  } %>
 
     <%= form.label :birthday, "誕生日:" %>
-    <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], { include_blank: "指定なし", selected: params[:birthday] }, selected: params[:birthday] %>
+    <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], { include_blank: "指定なし", selected: @param_birthday }, selected: @param_birthday %>
 
     <%= form.label :per_page, "表示件数:" %>
-    <%= form.select :per_page, ["10","50","100"], { include_blank: "指定なし", selected: params[:per_page] }, selected: params[:per_page] || "100" %>
+    <%= form.select :per_page, ["10","50","100"], { include_blank: "指定なし", selected: @param_per_page }, selected: @param_per_page || "100" %>
 
     <%= form.submit "探す" %>
   <% end %>
