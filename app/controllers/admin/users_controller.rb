@@ -7,7 +7,7 @@ module Admin
       @param_prefecture = params[:prefecture]
       @param_birthday = params[:birthday]
       @param_per_page = params[:per_page] 
-      @user_prefecture = User.prefectures.keys
+      @user_prefecturs = User.prefectures.keys
 
       if @param_name.present?
         @users = @users.search_name(@param_name)
@@ -23,7 +23,7 @@ module Admin
         @users = @users.order(birthday: :desc)
       end
 
-      @users = @users.page(params[:page]).per(params[:per_page].presence)
+      @users = @users.page(params[:page]).per(@param_per_page.presence)
     end
 
     def new
@@ -64,23 +64,6 @@ module Admin
 
     def edit
       @user = User.find(params[:id])
-    end
-
-    def update
-      @user = User.find(params[:id])
-      update_file = user_params[:image]
-      update_params = user_params
-
-      if update_file != nil
-        image_binary = update_file.read
-        update_params[:image] = image_binary
-      end
-
-      if @user.update(update_params)
-        redirect_to [:admin, @user]
-      else
-        render :edit, status: :unprocessable_entity
-      end
     end
 
     private
