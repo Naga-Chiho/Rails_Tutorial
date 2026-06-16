@@ -8,6 +8,7 @@ class Admin::SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
+      session[:user_name] = user.name
       redirect_to admin_users_path
     else
       render :new
