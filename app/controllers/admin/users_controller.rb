@@ -1,11 +1,31 @@
 module Admin  
     class UsersController < ApplicationController
-      PER_PAGE = 10
 
     def index
-      @users = User.page(params[:page]).per(PER_PAGE)
+      @users = User.all
+      @param_name = params[:name]
+      @param_prefecture = params[:prefecture]
+      @param_birthday = params[:birthday]
+      @param_per_page = params[:per_page] 
+      @user_prefectures = User.prefectures.keys
+
+      if @param_name.present?
+        @users = @users.search_name(@param_name)
+      end
+
+      if @param_prefecture.present?
+        @users = @users.search_prefecture(@param_prefecture)
+      end
+
+      if @param_birthday == "asc"
+        @users = @users.order(birthday: :asc)
+      elsif @param_birthday == "desc"
+        @users = @users.order(birthday: :desc)
+      end
+
+      @users = @users.page(params[:page]).per(@param_per_page.presence)
     end
-    
+
     def new
       @user = User.new
     end
@@ -19,21 +39,21 @@ module Admin
       send_data @user.image, type: 'image/jpeg', disposition: 'inline'
     end
 
-    def create
-      upload_file = user_params[:image]
+  def create
+    attrs = user_params
 
-      if upload_file != nil
-        upload_file = upload_file.read
-      end
-
-      @user = User.new(upload_file)
-      
-      if @user.save
-        redirect_to [:admin, @user]
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if attrs[:image].present?
+      attrs[:image] = attrs[:image].read
     end
+
+    @user = User.new(attrs)
+    
+    if @user.save
+      redirect_to [:admin, @user]
+    else
+      render :new, status: :unprocessable_entity
+  end
+  end
 
     def destroy
       @user = User.find(params[:id])
@@ -46,16 +66,16 @@ module Admin
     end
 
     def update
+      @user = User.find(params[:id])
       update_file = user_params[:image]
+      attrs = user_params
 
       if update_file != nil
         image_binary = update_file.read
-        update_params[:image] = image_binary
+        attrs[:image] = image_binary
       end
 
-      @user = User.find(params[:id])
-
-      if @user.update(user_params)
+      if @user.update(attrs)
         redirect_to [:admin, @user]
       else
         render :edit, status: :unprocessable_entity
