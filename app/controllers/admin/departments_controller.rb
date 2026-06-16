@@ -1,7 +1,7 @@
 module Admin    
     class DepartmentsController < ApplicationController
         before_action :require_login
-        
+
         def index
             @departments = Department.all
         end

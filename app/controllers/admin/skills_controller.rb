@@ -1,7 +1,7 @@
 module Admin
     class SkillsController < ApplicationController
         before_action :require_login
-        
+
         def index
             @skills = Skill.all
         end
