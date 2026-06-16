@@ -37,18 +37,20 @@ module Admin
       send_data @user.image, type: 'image/jpeg', disposition: 'inline'
     end
 
-    def create
-      @user = User.new(user_params)
-      upload_file = user_params[:image]
+    def update
+      @user = User.find(params[:id])
+      attrs = user_params
+      update_file = user_params[:image]
 
-      if upload_file != nil
-        upload_file = upload_file.read
+      if update_file != nil
+        image_binary = update_file.read
+        attrs[:image] = image_binary
       end
 
-      if @user.save
+      if @user.update(attrs)
         redirect_to [:admin, @user]
       else
-        render :new, status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     end
 
@@ -63,16 +65,16 @@ module Admin
     end
 
     def update
+      @user = User.find(params[:id])
       update_file = user_params[:image]
+      update_params = user_params
 
       if update_file != nil
         image_binary = update_file.read
         update_params[:image] = image_binary
       end
 
-      @user = User.find(params[:id])
-
-      if @user.update(user_params)
+      if @user.update(update_params)
         redirect_to [:admin, @user]
       else
         render :edit, status: :unprocessable_entity
