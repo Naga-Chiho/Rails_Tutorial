@@ -5,10 +5,10 @@
 
   <%= form_with url: admin_users_path, method: :get do |form| %>
     <%= form.label :name, "名前:" %>
-    <%= form.search_field :name, value: @param_name %>
+    <%= form.search_field :name, value: params[:name] %>
 
     <%= form.label :prefecture, "都道府県:" %>
-    <%= form.select :prefecture, @user_prefecture, { include_blank: "指定なし", selected: @param_prefecture  } %>
+    <%= form.select :prefecture, @user_prefectures, { include_blank: "指定なし", selected: @param_prefecture  } %>
 
     <%= form.label :birthday, "誕生日:" %>
     <%= form.select :birthday, [["昇順", "asc"], ["降順", "desc"]], { include_blank: "指定なし", selected: @param_birthday }, selected: @param_birthday %>

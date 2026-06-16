@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @param_prefecture = params[:prefecture]
     @param_birthday = params[:birthday]
     @param_per_page = params[:per_page] 
-    @user_prefectures = User.prefectures.keys
+    @user_prefectures  = User.prefectures.keys
 
     if @param_name.present?
       @users = @users.search_name(@param_name)
@@ -16,13 +16,13 @@ class UsersController < ApplicationController
       @users = @users.search_prefecture(@param_prefecture)
     end
 
-    if params[:birthday] == "asc"
+    if @param_birthday  == "asc"
       @users = @users.order(birthday: :asc)
-    elsif params[:birthday] == "desc"
+    elsif @param_birthday  == "desc"
       @users = @users.order(birthday: :desc)
     end
 
-    @users = @users.page(@param_per_page ).per(@param_per_page.presence)
+    @users = @users.page(@param_per_page).per(@param_per_page.presence)
   end
 
   def show
