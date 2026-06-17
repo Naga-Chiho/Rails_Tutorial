@@ -25,7 +25,7 @@
 
   <body>
     <% if session[:user_id]%>
-      <h3>ようこそ <%= session[:user_name] %> さん</h3>
+      <h3>ようこそ <%= current_user.name %> さん</h3>
       <%= button_to 'ログアウト', '/admin/logout', method: :delete %>
     <% end %>
 
