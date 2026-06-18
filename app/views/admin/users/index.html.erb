@@ -5,7 +5,7 @@
 
   <%= form_with url: admin_users_path, method: :get do |form| %>
     <%= form.label :name, "名前:" %>
-    <%= form.search_field :name, value: params[:name] %>
+    <%= form.search_field :name, value: @param_name %>
 
     <%= form.label :prefecture, "都道府県:" %>
     <%= form.select :prefecture, @user_prefectures, { include_blank: "指定なし", selected: @param_prefecture  } %>

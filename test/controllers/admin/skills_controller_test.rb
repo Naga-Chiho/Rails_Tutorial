@@ -2,6 +2,10 @@ require "test_helper"
 
 module Admin
   class SkillsControllerTest < ActionDispatch::IntegrationTest
+    setup do
+      @user = users(:test_data_1) 
+      post '/admin/login', params: { email: @user.email }
+    end
 
     test "#index スキル一覧取得" do
       get admin_skills_url
