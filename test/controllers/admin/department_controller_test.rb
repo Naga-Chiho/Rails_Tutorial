@@ -2,6 +2,10 @@ require "test_helper"
 
 module Admin
   class DepartmentsControllerTest < ActionDispatch::IntegrationTest
+    setup do
+      @user = users(:test_data_1) 
+      post '/admin/login', params: { email: @user.email }
+    end
 
     test "#index 部署一覧取得" do
       get admin_departments_url
