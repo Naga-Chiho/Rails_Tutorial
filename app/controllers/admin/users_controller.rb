@@ -93,6 +93,8 @@ module Admin
           :phone, 
           :mobile_phone, 
           :email, 
+          :password, 
+          :password_confirmation,
           :postal_code, 
           :prefecture, 
           :city, 
