@@ -2,6 +2,7 @@ class User < ApplicationRecord
   belongs_to :department
   has_many :users_skills, dependent: :destroy
   has_many :skills, through: :users_skills
+  has_secure_password
 
   scope :search_name, ->(name) { where("name LIKE ?", "%#{name}%") }
   scope :search_prefecture, ->(prefecture) { where(prefecture: prefecture) }
