@@ -16,6 +16,7 @@ test_data_1:
   building :
   birthday : 1998/01/10
   skills: kihon_joho,aroma_kentei
+  password_digest: <%= BCrypt::Password.create('password') %>
   
 
 test_data_2:
@@ -34,6 +35,7 @@ test_data_2:
   building : ときわグリーン105
   birthday : 1946/04/02
   skills: neko_kentei
+  password_digest: <%= BCrypt::Password.create('password') %>
 
 
      
