@@ -4,7 +4,7 @@ module Admin
   class SkillsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user = users(:test_data_1) 
-      post '/admin/login', params: { email: @user.email }
+      post '/admin/login', params: { email: @user.email, password: "password" }
     end
 
     test "#index スキル一覧取得" do

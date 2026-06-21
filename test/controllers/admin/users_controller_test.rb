@@ -4,7 +4,7 @@ module Admin
   class UsersControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user = users(:test_data_1) 
-      post '/admin/login', params: { email: @user.email }
+      post '/admin/login', params: { email: @user.email, password: "password" }
     end
 
     test "#index ユーザ一覧取得" do
@@ -35,7 +35,9 @@ module Admin
             street: "2-19-18",
             building: "東町アパート316",
             birthday: "1987/04/16",
-            skill_ids: [skills(:kihon_joho).id, skills(:neko_kentei).id]
+            skill_ids: [skills(:kihon_joho).id, skills(:neko_kentei).id],
+            password: "password",
+            password_confirmation: "password"
           } 
         }
       end
@@ -81,7 +83,9 @@ module Admin
           street: "2-19-18",
           building: "東町アパート316",
           birthday: "1987/04/16",
-          skill_ids: [skills(:boki).id]
+          skill_ids: [skills(:boki).id],
+          password: "password",
+          password_confirmation: "password"
         } 
       }
       puts response.body 
