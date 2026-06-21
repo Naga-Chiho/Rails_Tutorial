@@ -12,8 +12,7 @@ module Admin
         session[:user_id] = user.id
         redirect_to admin_users_path, notice: 'ログインしました。'
       else
-        flash.now[:alert] = 'メールアドレスまたはパスワードが間違っています。' 
-        render :new, status: :unprocessable_entity 
+        render :new
       end
     end
 
