@@ -5,7 +5,7 @@ module Admin
 
     def require_login
       if session[:user_id].nil?
-        redirect_to '/admin/login'
+        redirect_to new_admin_session_path
       end
     end
 

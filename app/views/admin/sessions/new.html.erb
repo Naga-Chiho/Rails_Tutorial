@@ -1,6 +1,6 @@
 <h1>管理画面 ログイン</h1>
 
-<%= form_with url: '/admin/login' do |form| %>
+<%= form_with url: admin_sessions_path do |form| %>
   <div>
     <%= form.label :email, "メールアドレス" %>
     <%= form.email_field :email %>
@@ -9,11 +9,6 @@
   <div>
     <%= form.label :password, "パスワード" %>
     <%= form.password_field :password %>
-  </div>
-  
-  <div>
-    <%= form.label :password_confirmation, "パスワード（確認）" %>
-    <%= form.password_field :password_confirmation %>
   </div>
 
   <div>
