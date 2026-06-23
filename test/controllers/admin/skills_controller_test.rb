@@ -3,8 +3,8 @@ require "test_helper"
 module Admin
   class SkillsControllerTest < ActionDispatch::IntegrationTest
     setup do
-      @user = users(:test_data_1) 
-      post admin_sessions_path, params: { email: @user.email, password: "password" }
+      user = users(:test_data_1) 
+      login_as user
     end
 
     test "#index スキル一覧取得" do
