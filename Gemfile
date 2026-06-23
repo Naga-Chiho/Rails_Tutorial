@@ -63,6 +63,7 @@ end
 
 gem "csv"
 gem 'kaminari'
+gem "bcrypt", "~> 3.1.7"
 
 
 

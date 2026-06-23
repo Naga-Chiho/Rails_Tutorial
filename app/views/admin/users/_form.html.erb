@@ -54,6 +54,22 @@
     <% end %>
   </div>
 
+    <div>
+    <%= form.label :password, "パスワード" %>
+    <%= form.password_field :password %>
+    <% if form.object.errors[:password].any? %>
+       <p><%= form.object.errors.full_messages_for(:password).first %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation, "パスワード（確認）" %>
+    <%= form.password_field :password_confirmation %>
+    <% if form.object.errors[:password_confirmation].any? %>
+       <p><%= form.object.errors.full_messages_for(:password_confirmation).first %></p>
+    <% end %>
+  </div>
+
   <div>
     <%= form.label :postal_code, "郵便番号" %>
     <%= form.text_field :postal_code %>

@@ -8,7 +8,9 @@ module Admin
     def create
       user = User.find_by(email: params[:email])
 
-      if user
+      if user && user.authenticate(params[:password])
+        reset_session 
+
         session[:user_id] = user.id
         redirect_to admin_users_path
       else
@@ -18,7 +20,7 @@ module Admin
 
     def destroy
       session.delete(:user_id)
-      redirect_to '/admin/login'
+      redirect_to new_admin_session_path
     end
   end
 end
