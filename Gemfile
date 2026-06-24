@@ -64,6 +64,8 @@ end
 gem "csv"
 gem 'kaminari'
 gem "bcrypt", "~> 3.1.7"
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 
 
 
