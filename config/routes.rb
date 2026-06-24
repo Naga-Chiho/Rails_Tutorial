@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index , :show]
     resources :skills, only: [:index , :show]
 
+    get '/auth/:provider/callback', to: 'admin/sessions#omniauth'
     root "users#index" 
 end
