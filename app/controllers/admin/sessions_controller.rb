@@ -1,6 +1,6 @@
 module Admin 
   class SessionsController < ApplicationController
-    skip_before_action :require_login, only: [:new, :create]
+    skip_before_action :require_login, only: [:new, :create, :omniauth]
     
     def new
     end
@@ -16,6 +16,9 @@ module Admin
       else
         render :new
       end
+    end
+
+    def omniauth
     end
 
     def destroy
