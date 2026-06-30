@@ -3,6 +3,12 @@
 <div id="skills">
   <%= link_to "新規作成", new_admin_skill_path %>
 
+  <nav>
+    <ol style="list-style: none;">
+      <li><%= link_to "スキル一覧", admin_skills_path %></li>
+    </ol>
+  </nav>
+
   <% @skills.each do |skill| %>
       <li style="padding-bottom: 12px;">
         <h3><%= skill.name %></h3>

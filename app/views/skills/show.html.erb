@@ -1,3 +1,11 @@
 <h1><%= @skill.name %></h1>
 
+  <nav>
+    <ol style="list-style: none; display: flex; align-items: center;">
+      <li><%= link_to "スキル一覧", skills_path %></li>
+      <span>　>　</span>
+      <li><%= link_to @skill.name, skill_path(@skill) %></li>
+    </ol>
+  </nav>
+
 <%= link_to "一覧に戻る", skills_path %>

@@ -3,6 +3,12 @@
 <div id="departments">
   <%= link_to "新規作成", new_admin_department_path %>
 
+  <nav>
+    <ol style="list-style: none;">
+      <li><%= link_to "部署一覧", admin_departments_path %></li>
+    </ol>
+  </nav>
+
   <ul>
     <% @departments.each do |department| %>
       <li style="padding-bottom: 12px;">

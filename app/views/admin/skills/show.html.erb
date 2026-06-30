@@ -1,5 +1,13 @@
 <h1><%= @skill.name %></h1>
 
+<nav>
+  <ol style="list-style: none; display: flex; align-items: center;">
+    <li><%= link_to "スキル一覧", admin_skills_path %></li>
+    <span>　>　</span>
+    <li><%= link_to @skill.name, [:admin, @skill] %></li>
+  </ol>
+</nav>
+
 <%= link_to "一覧に戻る", admin_skills_path %>
 <%= link_to "編集する", edit_admin_skill_path(@skill) %>
 <%= button_to "削除", [:admin, @skill], method: :delete, data: {

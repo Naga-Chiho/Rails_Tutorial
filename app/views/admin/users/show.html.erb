@@ -1,5 +1,13 @@
 <h1><%= @user.name %></h1>
 
+<nav>
+  <ol style="list-style: none; display: flex; align-items: center;">
+    <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+    <span>　>　</span>
+    <li><%= link_to @user.name, [:admin, @user] %></li>
+  </ol>
+</nav>
+
 <table>
   <tr>
     <th>項目</th>

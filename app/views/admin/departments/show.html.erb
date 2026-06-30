@@ -1,5 +1,13 @@
 <h1><%= @department.name %></h1>
 
+  <nav>
+    <ol style="list-style: none; display: flex; align-items: center;">
+      <li><%= link_to "部署一覧", admin_departments_path %></li>
+        <span>　>　</span>
+      <li><%= link_to @department.name, [:admin, @department] %></li>
+    </ol>
+  </nav>
+
   <ul>
     <% @department.users.each do |user| %>
         <p><%= user.name %></p>

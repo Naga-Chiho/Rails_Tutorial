@@ -1,5 +1,11 @@
 <h1>Skills</h1>
 
+  <nav>
+    <ol style="list-style: none;">
+      <li><%= link_to "スキル一覧", skills_path %></li>
+    </ol>
+  </nav>
+
 <div id="skills">
   <% @skills.each do |skill| %>
       <li style="padding-bottom: 12px;">

@@ -17,6 +17,12 @@
     <%= form.submit "探す" %>
   <% end %>
 
+  <nav>
+    <ol style="list-style: none;">
+      <li><%= link_to "ユーザー一覧", users_path %></li>
+    </ol>
+  </nav>
+
 
   <% @users.each do |user| %>
     <li style="padding-bottom: 12px;">
