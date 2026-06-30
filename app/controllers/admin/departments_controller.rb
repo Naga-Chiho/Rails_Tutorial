@@ -1,5 +1,7 @@
 module Admin    
+
     class DepartmentsController < ApplicationController
+        before_action :set_breadcrumbs
 
         def index
             @departments = Department.all
@@ -11,6 +13,7 @@ module Admin
 
         def show
             @department = Department.find(params[:id])
+            add_breadcrumb(@department.name)
         end
 
         def create
@@ -29,7 +32,8 @@ module Admin
         def update
             @department = Department.find(params[:id])
             if @department.update(department_params) 
-            redirect_to [:admin, @department]
+                add_breadcrumb(@department.name)
+                redirect_to [:admin, @department]
             else
                 render :edit, status: :unprocessable_entity
             end
@@ -39,6 +43,10 @@ module Admin
             @department = Department.find(params[:id])
             @department.destroy
             redirect_to admin_departments_path
+        end
+
+        def set_breadcrumbs
+            add_breadcrumb("部署一覧", departments_path)
         end
 
         private

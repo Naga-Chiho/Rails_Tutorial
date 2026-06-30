@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_breadcrumbs
+
   def index
     @users = User.all
     @param_name = params[:name]
@@ -26,6 +28,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    add_breadcrumb(@user.name) 
+  end
+
+  def set_breadcrumbs
+    add_breadcrumb("ユーザー一覧", users_path)
   end
 end
 

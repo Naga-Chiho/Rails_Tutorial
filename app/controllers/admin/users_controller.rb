@@ -1,5 +1,6 @@
 module Admin  
     class UsersController < ApplicationController
+      before_action :set_breadcrumbs
 
     def index
       @users = User.all
@@ -32,6 +33,7 @@ module Admin
 
     def show
       @user = User.find(params[:id])
+      add_breadcrumb(@user.name)
     end
 
     def show_image
@@ -77,11 +79,16 @@ module Admin
       end
 
       if @user.update(attrs)
+        add_breadcrumb(@user.name)
         redirect_to [:admin, @user]
       else
         render :edit, status: :unprocessable_entity
       end
     end
+
+      def set_breadcrumbs
+        add_breadcrumb("ユーザー一覧", users_path)
+      end
 
     private
       def user_params

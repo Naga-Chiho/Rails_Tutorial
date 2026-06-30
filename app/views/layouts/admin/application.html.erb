@@ -6,6 +6,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="App">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="App description">
+    <meta name="keywords" content="Rails, Tutorial, Admin, Users, Departments, Skills">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@HongoMCC" />
+    <meta name="twitter:creator" content="@HongoMCC" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -30,6 +35,19 @@
     <% end %>
 
     <h3>ここは管理画面です</h3>
+      <nav>
+        <% breadcrumbs.each do |crumb| %>
+          <% if crumb.link? %>
+            <%= link_to crumb.name, crumb.path, class: "breadcrumb-link" %>
+          <% else %>
+            <span class="breadcrumb-page"><%= crumb.name %></span>
+          <% end %>
+          
+          <% unless crumb == breadcrumbs.last %>
+            <span class="breadcrumb-separator"> > </span>
+          <% end %>
+        <% end %>
+      </nav>
 
     <%= yield %>
   </body>

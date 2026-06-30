@@ -1,7 +1,16 @@
 module Admin
   class ApplicationController < ActionController::Base
+    allow_browser versions: :modern
     before_action :require_login
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :breadcrumbs
+ 
+    def breadcrumbs
+      @breadcrumbs ||= []
+    end
+
+    def add_breadcrumb(name, path = nil)
+      breadcrumbs << Breadcrumb.new(name, path)
+    end
 
     def require_login
       if session[:user_id].nil?

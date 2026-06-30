@@ -1,5 +1,6 @@
 module Admin
     class SkillsController < ApplicationController
+        before_action :set_breadcrumbs
 
         def index
             @skills = Skill.all
@@ -11,6 +12,7 @@ module Admin
 
         def show
             @skill = Skill.find(params[:id])
+            add_breadcrumb(@skill.name)
         end
 
         def create
@@ -39,6 +41,10 @@ module Admin
             @skill = Skill.find(params[:id])
             @skill.destroy
             redirect_to admin_skills_path
+        end
+
+        def set_breadcrumbs
+            add_breadcrumb("スキル一覧", skills_path)
         end
 
         private
