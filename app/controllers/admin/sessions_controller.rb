@@ -22,22 +22,9 @@ module Admin
       auth_hash = request.env['omniauth.auth']
       email = auth_hash['info']['email']
 
-       if email.present? && email.end_with?('@rizapgroup.com')
-          user = User.find_or_create_by!(email: email) do |u|
-          u.name = auth_hash['info']['name'] || 'GitHub User'
-          u.password = SecureRandom.hex(10)
-          u.furigana = 'ダミー'
-          u.birthday = Date.new(2000, 1, 1)
-          u.department_id = Department.first&.id || 1 
-          u.gender = '男' 
-          u.phone = '090-0000-0000'
-          u.postal_code = '000-0000'
-          u.prefecture = '東京都' 
-          u.city = 'ダミー市区町村'
-          u.town = 'ダミー町名'
-          u.street = 'ダミー番地'
-        end
- 
+      user = User.find_by(email: email)
+
+      if user && email.present? && email.end_with?('@rizapgroup.com')
         reset_session 
 
         session[:user_id] = user.id
