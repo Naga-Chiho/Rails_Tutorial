@@ -15,3 +15,9 @@
     <%= form.submit "ログイン" %>
   </div>
 <% end %>
+
+<hr>
+
+<div>
+  <%= button_to 'GitHubでログイン', '/auth/github', data: { turbo: false } %>
+</div>
