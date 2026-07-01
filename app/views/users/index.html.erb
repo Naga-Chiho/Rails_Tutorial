@@ -1,3 +1,4 @@
+<% content_for(:title, "ユーザー一覧") %>
 <h1>Users</h1>
 
 <div id="users">
@@ -19,7 +20,7 @@
 
   <nav>
     <ol style="list-style: none;">
-      <li><%= link_to "ユーザー一覧", users_path %></li>
+      <li><%= link_to content_for(:title), users_path %></li>
     </ol>
   </nav>
 

@@ -1,8 +1,9 @@
+<% content_for(:title, "部署一覧") %>
 <h1>部署一覧</h1>
 
   <nav>
     <ol style="list-style: none;">
-      <li><%= link_to "部署一覧", departments_path %></li>
+      <li><%= link_to content_for(:title), departments_path %></li>
     </ol>
   </nav>
 

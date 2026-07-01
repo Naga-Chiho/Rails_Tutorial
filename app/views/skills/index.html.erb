@@ -1,8 +1,9 @@
+<% content_for(:title, "スキル一覧") %>
 <h1>Skills</h1>
 
   <nav>
     <ol style="list-style: none;">
-      <li><%= link_to "スキル一覧", skills_path %></li>
+      <li><%= link_to content_for(:title), skills_path %></li>
     </ol>
   </nav>
 
