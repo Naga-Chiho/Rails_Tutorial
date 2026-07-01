@@ -6,6 +6,21 @@
     </ol>
   </nav>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "部署一覧",
+        "item": "https://www.example.com/departments"
+      }
+    ]
+  }
+  </script>
+
   <ul>
     <% @departments.each do |department| %>
       <li style="padding-bottom: 12px;">

@@ -23,6 +23,21 @@
     </ol>
   </nav>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ユーザー一覧",
+        "item": "https://www.example.com/users"
+      }
+    ]
+  }
+  </script>
+
 
   <% @users.each do |user| %>
     <li style="padding-bottom: 12px;">
