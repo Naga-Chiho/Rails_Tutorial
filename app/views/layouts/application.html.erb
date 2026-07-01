@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <%= yield :head %>
   </head>
 
   <body>
     <h2>みなさんこんにちは</h2>
+    <%= yield :breadcrumb %>
 
     <%= yield %>
   </body>

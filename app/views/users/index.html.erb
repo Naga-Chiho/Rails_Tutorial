@@ -12,6 +12,9 @@
   <%= tag.meta property: "og:description", content: "ユーザー一覧のページです" %>
   <%= tag.meta property: "og:type", content: "article" %>
   <%= tag.meta property: "og:url", content: users_url %>
+  <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+  <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+  <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>  
   
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -39,11 +42,13 @@
     <%= form.submit "探す" %>
   <% end %>
 
-  <nav>
-    <ol style="list-style: none;">
-      <li><%= link_to content_for(:title), users_path %></li>
-    </ol>
-  </nav>
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), users_path %></li>
+      </ol>
+    </nav>
+  <% end %>
 
   <script type="application/ld+json">
   {
