@@ -1,5 +1,18 @@
 <h1>Users</h1>
 
+  <% content_for :head do %>
+    <title><%= content_for(:title) %> | Railsチュートリアル</title>
+    <%= tag.meta name: "description", content: "ユーザー一覧(管理者)のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "ユーザー一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "ユーザー一覧(管理者)のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: users_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
+
 <div id="users">
   <%= link_to "新規作成", new_admin_user_path %>
 
@@ -19,11 +32,13 @@
     <%= form.submit "探す" %>
   <% end %>
 
-  <nav>
-    <ol style="list-style: none;">
-      <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-    </ol>
-  </nav>
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), admin_users_path %></li>
+      </ol>
+    </nav>
+  <% end %>
 
   <% @users.each do |user| %>
       <li style="padding-bottom: 12px;">

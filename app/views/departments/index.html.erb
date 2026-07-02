@@ -1,29 +1,18 @@
 <% content_for(:title, "部署一覧") %>
 <h1>部署一覧</h1>
 
-<% content_for :head do %>
-  <%= tag.meta name: "description", content: "部署一覧のページです" %>
-  <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
-  <%= tag.meta name: "viewport", content: "width=device-width,initial-scale=1" %>
-  <%= tag.meta name: "apple-mobile-web-app-capable", content: "yes" %>
-  <%= tag.meta name: "application-name", content: "App" %>
-  <%= tag.meta name: "mobile-web-app-capable", content: "yes" %>
-  <%= tag.meta property: "og:title", content: "部署一覧 | Railsチュートリアル" %>
-  <%= tag.meta property: "og:description", content: "部署一覧のページです" %>
-  <%= tag.meta property: "og:type", content: "article" %>
-  <%= tag.meta property: "og:url", content: departments_url %>
-  <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
-  <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
-  <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
-  
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <link rel="icon" href="/icon.png" type="image/png">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-<% end %>
+  <% content_for :head do %>
+    <title><%= content_for(:title) %> | Railsチュートリアル</title>
+    <%= tag.meta name: "description", content: "部署一覧のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "部署一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "部署一覧のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: departments_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
 
   <% content_for :breadcrumb do %>
     <nav>

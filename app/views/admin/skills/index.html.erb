@@ -1,13 +1,28 @@
 <h1>Skills</h1>
 
+  <% content_for :head do %>
+    <title><%= content_for(:title) %> | Railsチュートリアル</title>
+    <%= tag.meta name: "description", content: "スキル一覧(管理者)のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "スキル一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "スキル一覧(管理者)のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: skills_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
+
 <div id="skills">
   <%= link_to "新規作成", new_admin_skill_path %>
 
-  <nav>
-    <ol style="list-style: none;">
-      <li><%= link_to "スキル一覧", admin_skills_path %></li>
-    </ol>
-  </nav>
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), admin_skills_path %></li>
+      </ol>
+    </nav>
+  <% end %>
 
   <% @skills.each do |skill| %>
       <li style="padding-bottom: 12px;">
