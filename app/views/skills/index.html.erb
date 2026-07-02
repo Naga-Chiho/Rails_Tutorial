@@ -1,4 +1,40 @@
+<% content_for(:title, "スキル一覧") %>
 <h1>Skills</h1>
+
+  <% content_for :head do %>
+    <%= tag.meta name: "description", content: "スキル一覧のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "スキル一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "スキル一覧のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: skills_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
+
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), skills_path %></li>
+      </ol>
+    </nav>
+  <% end %>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "スキル一覧",
+        "item": "skills_url"
+      }
+    ]
+  }
+  </script>
 
 <div id="skills">
   <% @skills.each do |skill| %>

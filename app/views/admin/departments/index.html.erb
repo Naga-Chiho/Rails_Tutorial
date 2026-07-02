@@ -1,7 +1,28 @@
 <h1>部署一覧</h1>
+<% content_for(:title, "部署一覧") %>
+
+  <% content_for :head do %>
+    <%= tag.meta name: "description", content: "部署一覧(管理者)のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "部署一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "部署一覧(管理者)のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: departments_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
 
 <div id="departments">
   <%= link_to "新規作成", new_admin_department_path %>
+
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), admin_departments_path %></li>
+      </ol>
+    </nav>
+  <% end %>
 
   <ul>
     <% @departments.each do |department| %>

@@ -1,4 +1,17 @@
+<% content_for(:title, "ユーザー一覧") %>
 <h1>Users</h1>
+
+  <% content_for :head do %>
+    <%= tag.meta name: "description", content: "ユーザー一覧のページです" %>
+    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
+    <%= tag.meta property: "og:title", content: "ユーザー一覧 | Railsチュートリアル" %>
+    <%= tag.meta property: "og:description", content: "ユーザー一覧のページです" %>
+    <%= tag.meta property: "og:type", content: "article" %>
+    <%= tag.meta property: "og:url", content: users_url %>
+    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+  <% end %>
 
 <div id="users">
   <%= form_with url: admin_users_path, method: :get do |form| %>
@@ -16,6 +29,29 @@
 
     <%= form.submit "探す" %>
   <% end %>
+
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), users_path %></li>
+      </ol>
+    </nav>
+  <% end %>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ユーザー一覧",
+        "item": "users_url"
+      }
+    ]
+  }
+  </script>
 
 
   <% @users.each do |user| %>
