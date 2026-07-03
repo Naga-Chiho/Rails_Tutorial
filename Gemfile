@@ -69,3 +69,4 @@ gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rubocop', require: false
+gem 'brakeman', require: false
