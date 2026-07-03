@@ -9,7 +9,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#show ユーザ詳細画面の表示' do
-    @user = users(:test_data_1)
+    @user = users(:test_data1)
     get user_url(@user)
     assert_response :success
   end

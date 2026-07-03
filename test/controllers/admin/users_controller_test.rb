@@ -5,7 +5,7 @@ require 'test_helper'
 module Admin
   class UsersControllerTest < ActionDispatch::IntegrationTest
     setup do
-      user = users(:test_data_1)
+      user = users(:test_data1)
       login_as user
     end
 
@@ -48,19 +48,19 @@ module Admin
     end
 
     test '#edit ユーザ編集フォームページの取得' do
-      @user = users(:test_data_1)
+      @user = users(:test_data1)
       get edit_admin_user_url(@user)
       assert_response :success
     end
 
     test '#show ユーザ詳細画面の表示' do
-      @user = users(:test_data_1)
+      @user = users(:test_data1)
       get admin_user_url(@user)
       assert_response :success
     end
 
     test '#destroy ユーザ削除動作確認' do
-      @user = users(:test_data_1)
+      @user = users(:test_data1)
       assert_difference('User.count', -1) do
         delete admin_user_url(@user)
       end
@@ -68,7 +68,7 @@ module Admin
     end
 
     test '#update ユーザ編集フォームの動作確認' do
-      @user = users(:test_data_1)
+      @user = users(:test_data1)
       patch admin_user_url(@user), params: {
         user: {
           name: '岩間匠',

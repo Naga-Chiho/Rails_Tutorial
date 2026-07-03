@@ -5,7 +5,7 @@ require 'test_helper'
 module Admin
   class DepartmentsControllerTest < ActionDispatch::IntegrationTest
     setup do
-      user = users(:test_data_1)
+      user = users(:test_data1)
       login_as user
     end
 
