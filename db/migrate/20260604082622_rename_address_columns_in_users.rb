@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameAddressColumnsInUsers < ActiveRecord::Migration[8.1]
   def change
     rename_column :users, :address1, :prefecture

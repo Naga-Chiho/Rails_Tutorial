@@ -1,9 +1,11 @@
-class DepartmentsController < ApplicationController  
-    def index
-        @departments = Department.all
-    end
+# frozen_string_literal: true
 
-    def show
-        @department = Department.find(params[:id])
-    end
+class DepartmentsController < ApplicationController
+  def index
+    @departments = Department.all
+  end
+
+  def show
+    @department = Department.find(params[:id])
+  end
 end

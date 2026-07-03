@@ -1,6 +1,8 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
@@ -11,7 +13,7 @@ module ActiveSupport
     fixtures :all
 
     def login_as(user)
-      params = { email: user.email, password: "password" }
+      params = { email: user.email, password: 'password' }
       post admin_sessions_path(user, params)
     end
 
