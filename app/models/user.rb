@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :skills, through: :users_skills
   has_secure_password
 
-  scope :search_name, ->(name) { where('name LIKE ?', "%#{name}%") }
+  scope :search_name, ->(name) { where("name LIKE ?", "#{name}%") }
   scope :search_prefecture, ->(prefecture) { where(prefecture: prefecture) }
 
   validates :name, presence: { message: '名前は必須です' }
