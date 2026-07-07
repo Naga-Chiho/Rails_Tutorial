@@ -1,25 +1,20 @@
-module Admin  
-    class UsersController < ApplicationController
-
+module Admin
+  class UsersController < ApplicationController
     def index
       @users = User.all
       @param_name = params[:name]
       @param_prefecture = params[:prefecture]
       @param_birthday = params[:birthday]
-      @param_per_page = params[:per_page] 
+      @param_per_page = params[:per_page]
       @user_prefectures = User.prefectures.keys
 
-      if @param_name.present?
-        @users = @users.search_name(@param_name)
-      end
+      @users = @users.search_name(@param_name) if @param_name.present?
 
-      if @param_prefecture.present?
-        @users = @users.search_prefecture(@param_prefecture)
-      end
+      @users = @users.search_prefecture(@param_prefecture) if @param_prefecture.present?
 
-      if @param_birthday == "asc"
+      if @param_birthday == 'asc'
         @users = @users.order(birthday: :asc)
-      elsif @param_birthday == "desc"
+      elsif @param_birthday == 'desc'
         @users = @users.order(birthday: :desc)
       end
 
@@ -39,27 +34,24 @@ module Admin
       send_data @user.image, type: 'image/jpeg', disposition: 'inline'
     end
 
-  def create
-    attrs = user_params
+    def create
+      attrs = user_params
 
-    if attrs[:image].present?
-      attrs[:image] = attrs[:image].read
+      attrs[:image] = attrs[:image].read if attrs[:image].present?
+
+      @user = User.new(attrs)
+
+      if @user.save
+        redirect_to [:admin, @user]
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
-
-    @user = User.new(attrs)
-    
-    if @user.save
-      redirect_to [:admin, @user]
-    else
-      render :new, status: :unprocessable_entity
-  end
-  
-  end
 
     def destroy
       @user = User.find(params[:id])
       @user.destroy
-      redirect_to admin_users_path 
+      redirect_to admin_users_path
     end
 
     def edit
@@ -71,7 +63,7 @@ module Admin
       update_file = user_params[:image]
       attrs = user_params
 
-      if update_file != nil
+      unless update_file.nil?
         image_binary = update_file.read
         attrs[:image] = image_binary
       end
@@ -84,27 +76,28 @@ module Admin
     end
 
     private
-      def user_params
-        params.expect(user: [
-          :name, 
-          :furigana,
-          :department_id,
-          :gender, 
-          :phone, 
-          :mobile_phone, 
-          :email, 
-          :password, 
-          :password_confirmation,
-          :postal_code, 
-          :prefecture, 
-          :city, 
-          :town, 
-          :street, 
-          :building,
-          :image,
-          :birthday, 
-          skill_ids: []
-        ])
-      end
+
+    def user_params
+      params.expect(user: [
+                      :name,
+                      :furigana,
+                      :department_id,
+                      :gender,
+                      :phone,
+                      :mobile_phone,
+                      :email,
+                      :password,
+                      :password_confirmation,
+                      :postal_code,
+                      :prefecture,
+                      :city,
+                      :town,
+                      :street,
+                      :building,
+                      :image,
+                      :birthday,
+                      { skill_ids: [] }
+                    ])
+    end
   end
 end

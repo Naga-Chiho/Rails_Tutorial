@@ -1,0 +1,28 @@
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'lib/tasks/**/*'
+    - 'test/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+    - 'app/controllers/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+    - 'test/**/*'
+    - 'app/controllers/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+    
