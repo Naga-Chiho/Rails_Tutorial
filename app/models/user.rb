@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   belongs_to :department
   has_many :users_skills, dependent: :destroy

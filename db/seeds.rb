@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'csv'
 
 CSV.foreach('/workspace/db/personal_information.csv', headers: true) do |row|

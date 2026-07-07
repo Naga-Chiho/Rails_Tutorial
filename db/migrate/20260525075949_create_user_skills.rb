@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateUserSkills < ActiveRecord::Migration[8.1]
   def change
     create_table :user_skills do |t|

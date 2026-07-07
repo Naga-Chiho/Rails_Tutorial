@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -54,8 +52,8 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
   gem 'bullet'
+  gem 'web-console'
 end
 
 group :test do
@@ -65,9 +63,9 @@ group :test do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'brakeman', require: false
 gem 'csv'
 gem 'kaminari'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rubocop', require: false
-gem 'brakeman', require: false

@@ -22,4 +22,7 @@ Metrics/AbcSize:
     - 'db/migrate/*'
     - 'test/**/*'
     - 'app/controllers/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
     
