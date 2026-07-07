@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-test_data_1:
+test_data1:
   name : 三井碧透
   furigana : ミツイアオト
   department: pd1
@@ -19,7 +19,7 @@ test_data_1:
   password_digest: <%= BCrypt::Password.create('password') %>
   
 
-test_data_2:
+test_data2:
   name : 石山光彦
   furigana : ミイシヤマミツヒコ
   department: pd2
