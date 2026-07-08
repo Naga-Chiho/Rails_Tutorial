@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def record_not_found
-    render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+  def record_not_found(exception)
+    @exception = exception
+    render 'errors/not_found', status: :not_found, layout: false
   end
 
   # Changes to the importmap will invalidate the etag for HTML responses
