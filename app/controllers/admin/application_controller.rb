@@ -23,7 +23,7 @@ module Admin
     def record_not_found
       render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
     end
-
+z
     layout 'admin/application'
   end
 end
