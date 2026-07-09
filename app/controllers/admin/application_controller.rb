@@ -22,7 +22,7 @@ module Admin
 
     def record_not_found(exception)
       @exception = exception
-      render 'errors/not_found', status: :not_found
+      render 'errors/not_found', status: :not_found, layout: 'error'
     end
 
     layout 'admin/application'
