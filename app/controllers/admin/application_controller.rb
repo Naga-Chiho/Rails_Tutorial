@@ -2,7 +2,7 @@ module Admin
   class ApplicationController < ActionController::Base
     before_action :require_login
     helper_method :current_user, :logged_in?
-    rescue_from ActiveRecord::RecordNotFound, :record_not_found
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def require_login
       return unless session[:user_id].nil?
@@ -20,10 +20,10 @@ module Admin
 
     private
 
-  def record_not_found(exception)
-    @exception = exception
-    render 'errors/not_found', status: :not_found, layout: false
-  end
+    def record_not_found(exception)
+      @exception = exception
+      render 'errors/not_found', status: :not_found, layout: 'error'
+    end
 
     layout 'admin/application'
   end
