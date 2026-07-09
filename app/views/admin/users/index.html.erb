@@ -14,7 +14,18 @@
   <% end %>
 
 <div id="users">
-  <%= link_to "新規作成", new_admin_user_path %>
+  <% content_for :breadcrumb do %>
+    <nav>
+      <ol style="list-style: none;">
+        <li><%= link_to content_for(:title), admin_users_path %></li>
+      </ol>
+    </nav>
+  <% end %>
+
+  <div class="flex justify-between items-center self-stretch p-spacing-xxs">
+    <h1>ユーザー一覧</h1>
+    <%= link_to "新規作成", new_admin_user_path %>
+  </div>
 
   <%= form_with url: admin_users_path, method: :get do |form| %>
     <%= form.label :name, "名前:" %>
@@ -30,14 +41,6 @@
     <%= form.select :per_page, ["10","50","100"], { include_blank: "指定なし", selected: @param_per_page }, selected: @param_per_page || "100" %>
 
     <%= form.submit "探す" %>
-  <% end %>
-
-  <% content_for :breadcrumb do %>
-    <nav>
-      <ol style="list-style: none;">
-        <li><%= link_to content_for(:title), admin_users_path %></li>
-      </ol>
-    </nav>
   <% end %>
 
   <% @users.each do |user| %>
