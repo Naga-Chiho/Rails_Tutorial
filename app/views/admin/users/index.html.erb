@@ -49,7 +49,6 @@
           </div>
         </div>
       </div>
-
       <div class="flex w-full">
         <div class="flex w-1/2">
           <div class="flex flex-col">
@@ -97,20 +96,41 @@
       </div>
     <% end %>
   </div>
-
-
-  <% @users.each do |user| %>
-    <div class="w-full h-auto flex flex-col items-start items-stretch gap-ms">
-      <ul class="list-none">
-        <li style="padding-bottom: 12px;">
-          <h3><%= user.name %></h3>
-          <%= link_to "詳細", [:admin, user] %>
-        </li>
-      </ul>
+  <div class="flex flex-col"> 
+    <span class="w-full p-lg"><%= @users.total_count %>件中 <%= @users.offset_value + 1 %> 〜 <%= @users.offset_value + @users.length %>件を表示中</span>
+    <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
+      <table class="w-full border-t border-gray-300">
+        <thead>
+          <tr>
+            <th class="py-md">ID</th>
+            <th class="py-md">氏名</th>
+            <th class="py-md">都道府県</th>
+            <th class="py-md">誕生日</th>
+            <th class="py-md">部署</th>
+            <th class="py-md">リンク</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="border-t border-gray-300">
+                <td class="py-md text-center"><%= user.id %></td>
+                <td class="py-md text-center"><%= user.name %></td>
+                <td class="py-md text-center"><%= user.prefecture %></td>
+                <td class="py-md text-center"><%= user.birthday&.strftime("%Y年%m月%d日") %></td>
+                <td class="py-md text-center"><%= user.department.name %></td>
+                <td class="py-md text-center flex justify-center">
+                  <%= link_to [:admin, user] do %>
+                    <span class="w-5xl flex items-center gap-3xs py-3xs px-sm rounded-sm border text-gray-700 hover:text-white bg-white hover:bg-gray-700 ">詳細 ></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
     </div>
-  <% end %>
+  </div>
 
   <div class="p-xxs">
-    <%= paginate @users %>
+    <%= paginate @users, window: 1 %>
   </div>
 </div>
