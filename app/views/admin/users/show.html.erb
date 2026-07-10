@@ -1,98 +1,117 @@
-<h1><%= @user.name %></h1>
+<div class="w-full min-h-screen font-japanese bg-gray-100">
+  <% content_for :breadcrumb do %>
+    <div class="w-full h-auto flex flex-col flex-1 justify-between items-start items-stretch gap-ms px-lg pt-lg bg-gray-100">
+      <nav aria-label="Breadcrumb">
+        <ol class="list-none flex items-center gap-2">
+          <li>
+            <%= link_to "Home", admin_users_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+          </li>
+          <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+            <%= link_to "ユーザー一覧", admin_users_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+          <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+          <li>
+            <%= link_to @user.name, [:admin, @user]  =%>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
 
-<nav>
-  <ol style="list-style: none; display: flex; align-items: center;">
-    <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-    <span>　>　</span>
-    <li><%= link_to @user.name, [:admin, @user] %></li>
-  </ol>
-</nav>
+  <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">ユーザー詳細</h1>
 
-<table>
-  <tr>
-    <th>項目</th>
-    <th>内容</th>
-  </tr>
-  <tr>
-    <td><strong>氏名</strong></td>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <td><strong>フリガナ</strong></td>
-    <td><%= @user.furigana %></td>
-  </tr>
-  <tr>
-    <td><strong>性別</strong></td>
-    <td><%= @user.gender %></td>
-  </tr>
-  <tr>
-    <td><strong>部署</strong></td>
-    <td><%= @user.department.name %></td>
-  </tr>
-  <tr>
-    <td><strong>電話番号</strong></td>
-    <td><%= @user.phone %></td>
-  </tr>
-  <tr>
-    <td><strong>携帯電話番号</strong></td>
-    <td><%= @user.mobile_phone %></td>
-  </tr>
-  <tr>
-    <td><strong>メールアドレス</strong></td>
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
-    <td><strong>郵便番号</strong></td>
-    <td><%= @user.postal_code %></td>
-  </tr>
-  <tr>
-    <td><strong>住所1</strong></td>
-    <td><%= @user.prefecture %></td>
-  </tr>
-  <tr>
-    <td><strong>住所2</strong></td>
-    <td><%= @user.city %></td>
-  </tr>
-  <tr>
-    <td><strong>住所3</strong></td>
-    <td><%= @user.town %></td>
-  </tr>
-  <tr>
-    <td><strong>住所4</strong></td>
-    <td><%= @user.street %></td>
-  </tr>
-  <tr>
-    <td><strong>住所5</strong></td>
-    <td><%= @user.building %></td>
-  </tr>
-  <tr>
-    <td><strong>生年月日</strong></td>
-    <td><%= @user.birthday %></td>
-  </tr>
-  <tr>
-    <td><strong>画像</strong></td>
-    <td>
-      <% if @user.image.present? %>
-        <%= image_tag show_image_admin_user_path(@user), size: "200x200" %>
-      <% else %>
-        画像なし
-      <% end %>
-    </td>
-  </tr>
-    <tr>
-    <td><strong>スキル</strong></td>
-    <td> 
-      <ul> 
-        <% @user.skills.each do |skill| %>
-          <li><%= skill.name %></li>
-        <% end %>
-      </ul>
-    </td> 
-  </tr>
-</table>
-
-<%= link_to "一覧に戻る", admin_users_path %>
-<%= link_to "編集する", edit_admin_user_path(@user) %>
-<%= button_to "削除",  [:admin, @user], method: :delete, data: {
-    turbo_confirm: "本当に削除しますか？" 
-  } %>
+  <div class="w-full flex flex-col justify-center px-lg">
+    <table class="w-full self-stretch p-lg bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start gap-ms overflow-hidden">
+      <tbody class="w-full flex flex-col ">
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center">
+          <td class="w-7xl py-md"><strong>ID</strong></td>
+          <td class=""><%= @user.id %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center">
+          <td class="w-7xl py-md"><strong>氏名</strong></td>
+          <td class=""><%= @user.name %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>フリガナ</strong></td>
+          <td><%= @user.furigana %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 inline-flex justify-start items-center">
+          <td class="w-7xl py-md"><strong>性別</strong></td>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>部署</strong></td>
+          <td><%= @user.department.name %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>電話番号</strong></td>
+          <td><%= @user.phone %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>携帯電話番号</strong></td>
+          <td><%= @user.mobile_phone %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>メールアドレス</strong></td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>郵便番号</strong></td>
+          <td><%= @user.postal_code %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>住所1</strong></td>
+          <td><%= @user.prefecture %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>住所2</strong></td>
+          <td><%= @user.city %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>住所3</strong></td>
+          <td><%= @user.town %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>住所4</strong></td>
+          <td><%= @user.street %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>住所5</strong></td>
+          <td><%= @user.building %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>生年月日</strong></td>
+          <td><%= @user.birthday %></td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>画像</strong></td>
+          <td>
+            <% if @user.image.present? %>
+              <%= image_tag show_image_admin_user_path(@user), size: "200x200" %>
+            <% else %>
+              画像なし
+            <% end %>
+          </td>
+        </tr>
+        <tr class="self-stretch border-t border-gray-300 justify-start items-center"> 
+          <td class="w-7xl py-md"><strong>スキル</strong></td>
+          <td> 
+            <ul> 
+              <% @user.skills.each do |skill| %>
+                <li><%= skill.name %></li>
+              <% end %>
+            </ul>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+    <div class="w-full flex justify-center items-center overflow-hidden">
+      <div class="flex pt-xxl pb-lg gap-xl">
+        <%= link_to "一覧に戻る", admin_users_path ,class:"px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
+        <%= link_to "編集する", edit_admin_user_path(@user),class:"px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
+        <%= button_to "削除",  [:admin, @user], method: :delete, data: {
+          turbo_confirm: "本当に削除しますか？" 
+        },class:"px-lg py-sm border rounded-md inline-flex justify-center items-center bg-gray-700 font-bold text-white" %>
+      </div>
+    </div>
+  </div>
+</div>
