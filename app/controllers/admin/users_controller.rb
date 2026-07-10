@@ -2,6 +2,7 @@ module Admin
   class UsersController < ApplicationController
     def index
       @users = User.all
+      @users = User.includes(:department)
       @param_name = params[:name]
       @param_prefecture = params[:prefecture]
       @param_birthday = params[:birthday]
