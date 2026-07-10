@@ -23,15 +23,44 @@
     <%= yield :head %>
   </head>
 
-  <body>
-    <!-- 
-      <% if session[:user_id]%>
-        <%= button_to 'ログアウト', admin_session_path(current_user.id), method: :delete %>
-      <% end %>
-    -->
-
+  <body class="w-full flex flex-row">
+    <div class="w-9xl flex flex-col justify-between p-lg">
+    <div>
+      <div class="w-full flex flex-col items-center pt-xl">
+        <img src="/logo.png" alt="ロゴ" class="w-7xl" / >
+        <p class="pt-xs text-center justify-start text-xs font-bold font-japanese leading-xs tracking-tight">ユーザー管理画面</p>
+      </div>
+      <div class="flex flex-col items-start px-lg">
+        <div class="flex pt-3xl hover:bg-gold-100">
+          <img src="/user.png" alt="ユーザー" class="w-lg mx-xs" / >
+          <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">ユーザー</p>
+        </div>
+        <div class="flex pt-3xl hover:bg-gold-100">
+          <img src="/department.png" alt="部署" class="w-lg mx-xs" / >
+          <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">部署</p>
+        </div>
+        <div class="flex pt-3xl hover:bg-gold-100">
+          <img src="/skill.png" alt="スキル" class="w-lg mx-xs" / >
+          <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">スキル</p>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex flex-col items-start">
+      <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md"><%= current_user.name %></p>
+      <p class="self-stretch justify-start text-xs font-bold font-japanese leading-xs tracking-tight-sm text-gray-600"><%= current_user.department.name %></p>
+      <p class="self-stretch justify-start text-xs font-japanese leading-xs tracking-tight-sm"><%= current_user.email %></p>
+      <div class="flex items-center pt-3xl">
+        <img src="/door.png" alt="ログアウト" class="w-lg mx-xs" / >
+        <% if session[:user_id]%>
+          <%= button_to 'ログアウト', admin_session_path(current_user.id), method: :delete , class: "justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+    <div class="w-full flex flex-col">
     <%= yield :breadcrumb %>
 
     <%= yield %>
+    </div>
   </body>
 </html>
