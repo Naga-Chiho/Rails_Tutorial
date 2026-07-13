@@ -1,15 +1,95 @@
-<h1><%= @skill.name %></h1>
+<div class="w-full min-h-screen font-japanese bg-gray-100">
+  <% content_for :breadcrumb do %>
+    <div class="w-full h-auto flex flex-col flex-1 justify-between items-start items-stretch gap-ms px-lg pt-lg bg-gray-100">
+      <nav aria-label="Breadcrumb">
+        <ol class="list-none flex items-center gap-2">
+          <li>
+            <%= link_to "Home", admin_skills_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+          </li>
+          <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+            <%= link_to "スキル一覧", admin_skills_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+          <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+          <li>
+            <%= link_to @skill.name, [:admin, @skill]  =%>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
 
-<nav>
-  <ol style="list-style: none; display: flex; align-items: center;">
-    <li><%= link_to "スキル一覧", admin_skills_path %></li>
-    <span>　>　</span>
-    <li><%= link_to @skill.name, [:admin, @skill] %></li>
-  </ol>
-</nav>
+  <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">部署詳細</h1>
+   <div class="w-full flex flex-col justify-center px-lg">
+      <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
+        <table class="w-full">
+          <tbody>
+            <tr class="border-t border-b border-gray-300">
+              <th class="w-7xl py-md pl-lg text-left font-regular text-gray-800">ID</th>
+              <td class="py-md pr-lg text-gray-800"><%= @skill.id %></td>
+            </tr>
+            <tr class="border-b border-gray-300">
+              <th class="w-7xl py-md pl-lg text-left font-regular text-gray-800">スキル名</th>
+              <td class="py-md pr-lg text-gray-800"><%= @skill.name %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-<%= link_to "一覧に戻る", admin_skills_path %>
-<%= link_to "編集する", edit_admin_skill_path(@skill) %>
-<%= button_to "削除", [:admin, @skill], method: :delete, data: {
-    turbo_confirm: "本当に削除しますか？" 
-  } %>
+      <div class="mt-lg p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
+        <table class="w-full border-t border-gray-300">
+          <thead>
+            <tr>
+              <th class="py-md">ID</th>
+              <th class="py-md">氏名</th>
+              <th class="py-md">都道府県</th>
+              <th class="py-md">誕生日</th>
+              <th class="py-md">リンク</th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @skill.users.each do |user| %>
+                <tr class="border-t border-gray-300">
+                  <td class="py-md text-center"><%= user.id %></td>
+                  <td class="py-md text-center"><%= user.name %></td>
+                  <td class="py-md text-center"><%= user.prefecture %></td>
+                  <td class="py-md text-center"><%= user.birthday&.strftime("%Y年%m月%d日") %></td>
+                  <td class="py-md text-center flex justify-center">
+                    <%= link_to [:admin, user] do %>
+                      <span class="w-5xl flex items-center gap-3xs py-3xs px-sm rounded-sm border text-gray-700 hover:text-white bg-white hover:bg-gray-700 ">詳細
+                        <img src="/right-vector.svg" alt="矢印" class="w-sm h-sm"/>
+                      </span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+  </div>
+
+
+
+
+    <div class="w-full flex justify-center items-center overflow-hidden">
+      <div class="flex pt-xxl pb-lg gap-xl">
+        <%= link_to "一覧に戻る", admin_skills_path ,class:"px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
+        <%= link_to "編集する", edit_admin_skill_path(@skill),class:"px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
+        <%= button_to "削除",  [:admin, @skill], method: :delete, data: {
+          turbo_confirm: "本当に削除しますか？" 
+        },class:"px-lg py-sm border rounded-md inline-flex justify-center items-center bg-gray-700 font-bold text-white" %>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+  
+
+
+  
+
+ 
+
+
+

@@ -2,6 +2,9 @@ module Admin
   class SkillsController < ApplicationController
     def index
       @skills = Skill.all
+      @param_name = params[:name]
+      @param_per_page = params[:per_page]
+      @skills = @skills.page(params[:page]).per(@param_per_page.presence)
     end
 
     def new
