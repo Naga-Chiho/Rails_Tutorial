@@ -2,6 +2,9 @@ module Admin
   class DepartmentsController < ApplicationController
     def index
       @departments = Department.all
+      @param_name = params[:name]
+      @param_per_page = params[:per_page]
+      @departments = @departments.page(params[:page]).per(@param_per_page.presence)
     end
 
     def new
