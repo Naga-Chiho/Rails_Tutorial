@@ -31,18 +31,18 @@
         <p class="pt-xs text-center justify-start text-xs font-bold font-japanese leading-xs tracking-tight">ユーザー管理画面</p>
       </div>
       <div class="flex flex-col items-start gap-xxl">
-        <div class="w-8xl flex py-xs rounded-xs hover:bg-gold-100">
-          <img src="/user.svg" alt="ユーザー" class="w-lg mx-xs" / >
+        <%= link_to admin_users_path, class: "w-8xl flex py-xs rounded-xs #{controller_name == 'users' ? 'bg-gold-100' : 'hover:bg-gold-100'}" do %>
+          <img src="/user.svg" alt="ユーザー" class="w-lg mx-xs" />
           <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">ユーザー</p>
-        </div>
-        <div class="w-8xl flex py-xs rounded-xs hover:bg-gold-100">
-          <img src="/department.svg" alt="部署" class="w-lg mx-xs" / >
+        <% end %>
+        <%= link_to admin_departments_path, class: "w-8xl flex py-xs rounded-xs #{controller_name == 'departments' ? 'bg-gold-100' : 'hover:bg-gold-100'}" do %>
+          <img src="/department.svg" alt="部署" class="w-lg mx-xs" />
           <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">部署</p>
-        </div>
-        <div class="w-8xl flex py-xs rounded-xs hover:bg-gold-100">
-          <img src="/skill.svg" alt="スキル" class="w-lg mx-xs" / >
+        <% end %>
+        <%= link_to admin_skills_path, class: "w-8xl flex py-xs rounded-xs #{controller_name == 'skills' ? 'bg-gold-100' : 'hover:bg-gold-100'}" do %>
+          <img src="/skill.svg" alt="スキル" class="w-lg mx-xs" />
           <p class="justify-start text-sm font-bold font-japanese leading-xs tracking-tight-md">スキル</p>
-        </div>
+        <% end %>
       </div>
     </div>
     <div class="w-full flex flex-col items-start">
