@@ -1,142 +1,154 @@
-<%= form_with model: [:admin, user] do |form| %>
+<div class="w-full min-h-screen py-lg font-japanese bg-gray-100">
+  <%= form_with model: [:admin, user] do |form| %>
+    <div class="w-form-max p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="flex flex-col pb-lg">
+        <%= form.label :name, "ID" , class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :id, disabled: true, class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm disabled:bg-gray-200" %>
+      </div>
 
-  <div>
-    <%= form.label :name, "氏名" %>
-    <%= form.text_field :name %>
-    <% if form.object.errors[:name].any? %>
-       <p><%= form.object.errors.full_messages_for(:name).first %></p>
-    <% end %>
-  </div>
-    
+      <div class="flex flex-col pb-lg">
+        <%= form.label :name, "名前", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :name ,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:name].any? %>
+          <p><%= form.object.errors.full_messages_for(:name).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :furigana, "フリガナ" %>
-    <%= form.text_field :furigana %>
-    <% if form.object.errors[:furigana].any? %>
-       <p><%= form.object.errors.full_messages_for(:furigana).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :furigana, "フリガナ", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :furigana,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:furigana].any? %>
+          <p><%= form.object.errors.full_messages_for(:furigana).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :gender, "性別" %>
-    <%= form.select :gender, ["男", "女", "その他"], include_blank: "選択してください" %>
-    <% if form.object.errors[:gender].any? %>
-       <p><%= form.object.errors.full_messages_for(:gender).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :gender, "性別", class:"py-xs font-bold text-gray-900" %>
+        <div class="flex pb-lg gap-sm py-xs">
+        <label class="flex items-center cursor-pointer">
+          <%= form.radio_button :gender, "男", checked: @param_gender == "男", class: "sr-only peer" %>
+          <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
+          <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+            <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">男性</span>
+        </label>
+        <label class="flex items-center cursor-pointer">
+          <%= form.radio_button :gender, "女", checked: @param_gender == "女", class: "sr-only peer" %>
+          <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
+          <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+            <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">女性</span>
+        </label>
+        <label class="flex items-center cursor-pointer">
+          <%= form.radio_button :gender, "その他", checked: @param_gender == "その他", class: "sr-only peer" %>
+          <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
+          <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+            <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">未回答</span>
+        </label>
+      </div>
+        <% if form.object.errors[:gender].any? %>
+          <p><%= form.object.errors.full_messages_for(:gender).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :index_users_on_department_id, "部署" %>
-    <%= form.collection_select :department_id, Department.all, :id, :name, { prompt: "部署を選択してください" } %>
-  </div>
 
-  <div>
-    <%= form.label :phone, "電話番号" %>
-    <%= form.telephone_field :phone %>
-    <% if form.object.errors[:phone].any? %>
-       <p><%= form.object.errors.full_messages_for(:phone).first %></p>
-    <% end %>
-  </div>
 
-  <div>
-    <%= form.label :mobile_phone, "携帯電話番号" %>
-    <%= form.telephone_field :mobile_phone %>
-    <% if form.object.errors[:mobile_phone].any? %>
-       <p><%= form.object.errors.full_messages_for(:mobile_phone).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :phone, "電話番号", class:"py-xs font-bold text-gray-900" %>
+        <%= form.telephone_field :phone ,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm"%>
+        <% if form.object.errors[:phone].any? %>
+          <p><%= form.object.errors.full_messages_for(:phone).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :email, "メールアドレス" %>
-    <%= form.email_field :email %>
-    <% if form.object.errors[:email].any? %>
-       <p><%= form.object.errors.full_messages_for(:email).first %></p>
-    <% end %>
-  </div>
+      <% if false %>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :mobile_phone, "携帯電話番号" , class:"py-xs font-bold text-gray-900"%>
+        <%= form.telephone_field :mobile_phone %>
+        <% if form.object.errors[:mobile_phone].any? %>
+          <p><%= form.object.errors.full_messages_for(:mobile_phone).first %></p>
+        <% end %>
+      </div>
+      <% end %>
 
-    <div>
-    <%= form.label :password, "パスワード" %>
-    <%= form.password_field :password %>
-    <% if form.object.errors[:password].any? %>
-       <p><%= form.object.errors.full_messages_for(:password).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :email, "メールアドレス" , class:"py-xs font-bold text-gray-900"%>
+        <%= form.email_field :email,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:email].any? %>
+          <p><%= form.object.errors.full_messages_for(:email).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :password_confirmation, "パスワード（確認）" %>
-    <%= form.password_field :password_confirmation %>
-    <% if form.object.errors[:password_confirmation].any? %>
-       <p><%= form.object.errors.full_messages_for(:password_confirmation).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :postal_code, "郵便番号", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :postal_code ,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm"%>
+        <% if form.object.errors[:postal_code].any? %>
+          <p><%= form.object.errors.full_messages_for(:postal_code).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :postal_code, "郵便番号" %>
-    <%= form.text_field :postal_code %>
-    <% if form.object.errors[:postal_code].any? %>
-       <p><%= form.object.errors.full_messages_for(:postal_code).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :prefecture, "都道府県", class:"py-xs font-bold text-gray-900" %>
+        <%= form.select :prefecture, User.prefectures.keys, { include_blank: "選択してください" }, { class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm bg-white text-gray-900" } %>
+        <% if form.object.errors[:prefecture].any? %>
+          <p><%= form.object.errors.full_messages_for(:prefecture).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-   <%= form.label :prefecture, "都道府県" %>
-   <%= form.select :prefecture, User.prefectures.keys %>
-    <% if form.object.errors[:prefecture].any? %>
-       <p><%= form.object.errors.full_messages_for(:prefecture).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :city, "市区町村", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :city,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:city].any? %>
+          <p><%= form.object.errors.full_messages_for(:city).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :city, "市区町村" %>
-    <%= form.text_field :city %>
-    <% if form.object.errors[:city].any? %>
-       <p><%= form.object.errors.full_messages_for(:city).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :town, "町名・丁目", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :town,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:town].any? %>
+          <p><%= form.object.errors.full_messages_for(:town).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :town, "町名・丁目" %>
-    <%= form.text_field :town %>
-    <% if form.object.errors[:town].any? %>
-       <p><%= form.object.errors.full_messages_for(:town).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :street, "番地", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :street,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:street].any? %>
+          <p><%= form.object.errors.full_messages_for(:street).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :street, "番地" %>
-    <%= form.text_field :street %>
-    <% if form.object.errors[:street].any? %>
-       <p><%= form.object.errors.full_messages_for(:street).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :building, "建物名・部屋番号", class:"py-xs font-bold text-gray-900" %>
+        <%= form.text_field :building,class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm" %>
+        <% if form.object.errors[:building].any? %>
+          <p><%= form.object.errors.full_messages_for(:building).first %></p>
+        <% end %>
+      </div>
 
-  <div>
-    <%= form.label :building, "建物名・部屋番号" %>
-    <%= form.text_field :building %>
-    <% if form.object.errors[:building].any? %>
-       <p><%= form.object.errors.full_messages_for(:building).first %></p>
-    <% end %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :birthday, "生年月日", class:"py-xs font-bold text-gray-900" %>
+        <%= form.date_field :birthday,value: "2000-01-01"%>
+        <% if form.object.errors[:birthday].any? %>
+          <p><%= form.object.errors.full_messages_for(:birthday).first %></p>
+        <% end %>
+      </div>
+      
+      <div class="flex flex-col pb-lg">
+        <%= form.label :image, "プロフィール画像" ,class:"py-xs font-bold text-gray-900"%>
+        <%= form.file_field :image %>
+      </div>
 
-  <div>
-    <%= form.label :birthday, "生年月日" %>
-    <%= form.date_field :birthday,value: "2000-01-01"%>
-    <% if form.object.errors[:birthday].any? %>
-       <p><%= form.object.errors.full_messages_for(:birthday).first %></p>
-    <% end %>
-  </div>
-  
-  <div>
-    <%= form.label :image, "プロフィール画像" %>
-    <%= form.file_field :image %>
-  </div>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :index_user_skills_on_user_id, "スキル" , class:"py-xs font-bold text-gray-900"%>
+        <%= form.collection_check_boxes :skill_ids, Skill.all, :id, :name%>
+      </div>
 
-  <div>
-    <%= form.label :index_user_skills_on_user_id, "スキル" %>
-    <%= form.collection_check_boxes :skill_ids, Skill.all, :id, :name%>
-  </div>
-
-  <div>
-    <%= form.submit "保存する" %>
-  </div>
-<% end %>
+        <div class="w-full flex pt-xxl pb-lg gap-xl">
+          <div class="w-full flex justify-center items-center">
+            <%= link_to "詳細へ戻る", admin_skills_path ,class:"mx-xs px-md py-sm border rounded-md inline-flex justify-center items-center font-bold text-gray-700"%>
+            <%= form.submit "保存" , class:"mx-xs px-xxl py-sm border rounded-md inline-flex justify-center items-center font-bold text-white bg-gold-900" %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>

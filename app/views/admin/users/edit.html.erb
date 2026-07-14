@@ -1,4 +1,21 @@
-<h1>Edit user</h1>
+<div class="bg-gray-100">
+    <% content_for(:title, "ユーザー編集") %>
+    <% content_for :breadcrumb do %>
+        <div class="w-full h-auto flex flex-col flex-1 justify-between items-start items-stretch gap-ms px-lg pt-lg bg-gray-100">
+        <nav aria-label="Breadcrumb">
+            <ol class="list-none flex items-center gap-2">
+            <li>
+                <%= link_to "Home", admin_users_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+            </li>
+            <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+            <li class="pr-xs text-md hover:text-gray-900 hover:underline" aria-current="page">
+                <%= content_for(:title) %>
+            </li>
+            </ol>
+        </nav>
+        </div>
+    <% end %>
+    <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">ユーザー編集</h1>
 
-<%= render "form", user: @user %>
-<%= link_to "Cancel", @user %>
+    <%= render "form", user: @user %>
+</div>
