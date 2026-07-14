@@ -11,14 +11,12 @@
       <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
       <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
     <% end %>
-
   <div id="skills">
     <div class="w-full flex justify-between items-center self-stretch px-lg">
       <h1 class="text-xl font-bold leading-xs tracking-tight-xxl">スキル一覧</h1>
       <%= link_to "新規作成", new_admin_skill_path , class: "flex align-center py-md px-lg gap-3xs border rounded-sm border-gray-400 bg-white"%>
     </div>
   </div>
-
   <% content_for :breadcrumb do %>
     <div class="w-full h-auto flex flex-col justify-between items-start items-stretch gap-ms px-lg py-lg bg-gray-100">
       <nav aria-label="Breadcrumb">
@@ -34,7 +32,6 @@
       </nav>
     </div>
   <% end %>
-
   <div class="flex flex-col"> 
       <span class="w-full p-lg"><%= @skills.total_count %>件中 <%= @skills.offset_value + 1 %> 〜 <%= @skills.offset_value + @skills.length %>件を表示中</span>
       <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
@@ -69,23 +66,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-   
-
-
- 
-

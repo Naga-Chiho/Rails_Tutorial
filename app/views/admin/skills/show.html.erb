@@ -16,7 +16,6 @@
       </nav>
     </div>
   <% end %>
-
   <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">スキル詳細</h1>
    <div class="w-full flex flex-col justify-center px-lg">
       <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
@@ -33,7 +32,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="mt-lg p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
         <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">スキルを習得しているユーザー一覧</h1>
         <table class="w-full border-gray-300">
@@ -66,31 +64,13 @@
         </table>
       </div>
   </div>
-
-
-
-
     <div class="w-full flex justify-center items-center overflow-hidden">
       <div class="flex pt-xxl pb-lg gap-xl">
-        <%= link_to "一覧に戻る", admin_skills_path ,class:"px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
-        <%= link_to "編集する", edit_admin_skill_path(@skill),class:"px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
+        <%= link_to "一覧に戻る", admin_skills_path ,class:"bg-white px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
+        <%= link_to "編集する", edit_admin_skill_path(@skill),class:"bg-white px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
         <%= button_to "削除",  [:admin, @skill], method: :delete, data: {
           turbo_confirm: "本当に削除しますか？" 
         },class:"px-lg py-sm border rounded-md inline-flex justify-center items-center bg-gray-700 font-bold text-white" %>
       </div>
     </div>
 </div>
-
-
-
-
-
-  
-
-
-  
-
- 
-
-
-
