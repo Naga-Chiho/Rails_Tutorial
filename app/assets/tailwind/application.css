@@ -76,7 +76,8 @@
   --radius-full: 9999px;
 
   /* Global Spacing Scale */
-  --spacing-4xs: 0.24px;
+  --spacing-5xs: 0.24px;
+  --spacing-4xs: 2px;
   --spacing-3xs: 4px;
   --spacing-xxs: 6px;
   --spacing-xs: 8px;
