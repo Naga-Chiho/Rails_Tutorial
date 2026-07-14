@@ -16,7 +16,6 @@
       </nav>
     </div>
   <% end %>
-
   <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">部署詳細</h1>
    <div class="w-full flex flex-col justify-center px-lg">
       <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
@@ -33,11 +32,11 @@
           </tbody>
         </table>
       </div>
-
       <div class="mt-lg p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
+      <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">部署に所属しているユーザー一覧</h1>
         <table class="w-full border-t border-gray-300">
           <thead>
-            <tr>
+            <tr class="border-b-2  border-gray-300">
               <th class="py-md">ID</th>
               <th class="py-md">氏名</th>
               <th class="py-md">都道府県</th>
@@ -65,31 +64,13 @@
         </table>
       </div>
   </div>
-
-
-
-
     <div class="w-full flex justify-center items-center overflow-hidden">
       <div class="flex pt-xxl pb-lg gap-xl">
-        <%= link_to "一覧に戻る", admin_departments_path ,class:"px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
-        <%= link_to "編集する", edit_admin_department_path(@department),class:"px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
+        <%= link_to "一覧に戻る", admin_departments_path ,class:"bg-white px-lg py-sm border rounded-md inline-flex justify-center items-center"%>
+        <%= link_to "編集する", edit_admin_department_path(@department),class:"bg-white px-lg py-sm border rounded-md inline-flex justify-center items-center" %>
         <%= button_to "削除",  [:admin, @department], method: :delete, data: {
           turbo_confirm: "本当に削除しますか？" 
         },class:"px-lg py-sm border rounded-md inline-flex justify-center items-center bg-gray-700 font-bold text-white" %>
       </div>
     </div>
 </div>
-
-
-
-
-
-  
-
-
-  
-
- 
-
-
-
