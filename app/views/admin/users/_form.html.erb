@@ -127,20 +127,22 @@
 
       <div class="flex flex-col pb-lg">
         <%= form.label :birthday, "生年月日", class:"py-xs font-bold text-gray-900" %>
-        <%= form.date_field :birthday,value: "2000-01-01"%>
+        <%= form.date_field :birthday,value: "2000-01-01",class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm"%>
         <% if form.object.errors[:birthday].any? %>
           <p><%= form.object.errors.full_messages_for(:birthday).first %></p>
         <% end %>
       </div>
-      
-      <div class="flex flex-col pb-lg">
-        <%= form.label :image, "プロフィール画像" ,class:"py-xs font-bold text-gray-900"%>
-        <%= form.file_field :image %>
-      </div>
 
       <div class="flex flex-col pb-lg">
-        <%= form.label :index_user_skills_on_user_id, "スキル" , class:"py-xs font-bold text-gray-900"%>
-        <%= form.collection_check_boxes :skill_ids, Skill.all, :id, :name%>
+        <%= form.label :skill_ids, "スキル", class: "py-xs font-bold text-gray-900" %>
+        <div class="flex flex-wrap gap-xs">
+          <%= form.collection_check_boxes :skill_ids, Skill.all, :id, :name do |b| %>
+            <label class="flex items-center space-x-1.5 cursor-pointer whitespace-nowrap">
+              <%= b.check_box class: "rounded border-gray-300 text-blue-600 focus:ring-blue-500" %>
+              <span class="text-sm text-gray-700"><%= b.text %></span>
+            </label>
+          <% end %>
+        </div>
       </div>
 
         <div class="w-full flex pt-xxl pb-lg gap-xl">
