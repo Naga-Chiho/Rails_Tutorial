@@ -151,6 +151,7 @@
   /* Box Shadows */
   --shadow-md: 0 2px 10px 0 rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 2px 10px 0 rgba(18, 41, 57, 0.08);
+  --shadow-error: 0 0 0 3px rgba(226,33,30,0.20);
 
   /* Transitions */
   --transition-duration-table-hover: 150ms;

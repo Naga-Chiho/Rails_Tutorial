@@ -10,7 +10,7 @@
             <%= link_to "ユーザー一覧", admin_users_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
           <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
           <li>
-            <%= link_to @user.name, [:admin, @user]  =%>
+            <%= link_to "ユーザー詳細(" + @user.name + ")", [:admin, @user]  =%>
           </li>
         </ol>
       </nav>
