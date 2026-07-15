@@ -4,12 +4,12 @@
       <nav aria-label="Breadcrumb">
         <ol class="list-none flex items-center gap-2">
           <li>
-            <%= link_to "Home", admin_skills_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+            <%= link_to "Home", admin_skills_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           </li>
           <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
-            <%= link_to "スキル一覧", admin_skills_path, class: "pr-xs text-md hover:text-gray-900 hover:underline" %>
+            <%= link_to "スキル一覧", admin_skills_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
-          <li>
+          <li class="font-bold">
             <%= link_to @skill.name, [:admin, @skill]  =%>
           </li>
         </ol>
