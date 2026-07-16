@@ -24,7 +24,7 @@
           <li>
             <%= link_to "Home", admin_users_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           </li>
-          <%= image_tag "right-vector.svg" alt="矢印" class="w-md h-md pr-xs" %>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
           <li class="font-bold pr-xs text-md hover:text-gray-900 hover:underline" aria-current="page">
             <%= content_for(:title) %>
           </li>
@@ -51,7 +51,7 @@
                   <td class="py-md text-center flex justify-center">
                     <%= link_to [:admin, skill] do %>
                       <span class="w-5xl flex items-center gap-3xs py-3xs px-sm rounded-sm border text-gray-700 hover:text-white bg-white hover:bg-gray-700 ">詳細
-                        <%= image_tag "right-vector.svg" alt="矢印" class="w-sm h-sm" %>
+                        <%= image_tag "right-vector.svg", alt: "矢印", class: "w-sm h-sm" %>
                       </span>
                     <% end %>
                   </td>

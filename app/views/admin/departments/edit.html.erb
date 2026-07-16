@@ -7,13 +7,13 @@
           <li>
             <%= link_to "Home", admin_departments_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           </li>
-          <%= image_tag "right-vector.svg" alt="矢印" class="w-md h-md pr-xs" %>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
             <%= link_to "部署一覧", admin_departments_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
-          <%= image_tag "right-vector.svg" alt="矢印" class="w-md h-md pr-xs" %>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
           <li>
             <%= link_to "部署詳細(" + @department.name + ")", [:admin, @department] , class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           </li>
-          <%= image_tag "right-vector.svg" alt="矢印" class="w-md h-md pr-xs" %>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
           <li class="font-bold">
             <%= link_to "部署編集(" + @department.name + ")", [:admin, @department] %>
           </li>
