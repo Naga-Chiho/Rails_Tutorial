@@ -1,5 +1,6 @@
-<div class="w-full min-h-screen py-lg font-japanese bg-gray-100">
-  <%= form_with model: [:admin, user] do |form| %>
+<div class="w-full min-h-screen flex flex-col jusyify-center items-center py-lg font-japanese bg-gray-100">
+  <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl text-center font-bold leading-xs tracking-tight-xxl bg-gray-100">新規登録</h1>
+  <%= form_with model: @user, url: admin_signup_index_path, local: true do |form| %>
     <div class="w-form-max p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
       <div class="flex flex-col pb-lg">
         <%= form.label :name, "ID" , class:"py-xs font-bold text-gray-900" %>
@@ -91,6 +92,26 @@
         <% end %>
       </div>
 
+      <%# パスワード入力 %>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :password, "パスワード", class: "py-xs font-bold text-gray-900" %>
+        <% has_pass_error = form.object.errors[:password].any? %>
+        <%= form.password_field :password, class: "w-1/2 px-ms py-xs border rounded-sm #{has_pass_error ? 'border-red-700 shadow-error' : 'border-gray-300'}", placeholder: "パスワードを入力してください" %>
+        <% if has_pass_error %>
+          <p class="text-sm text-red-700 mt-1"><%= form.object.errors.full_messages_for(:password).first %></p>
+        <% end %>
+      </div>
+
+      <%# パスワード確認入力 %>
+      <div class="flex flex-col pb-lg">
+        <%= form.label :password_confirmation, "パスワード（確認用）", class: "py-xs font-bold text-gray-900" %>
+        <% has_pass_conf_error = form.object.errors[:password_confirmation].any? %>
+        <%= form.password_field :password_confirmation, class: "w-1/2 px-ms py-xs border rounded-sm #{has_pass_conf_error ? 'border-red-700 shadow-error' : 'border-gray-300'}",placeholder: "もう一度パスワードを入力してください" %>
+        <% if has_pass_conf_error %>
+          <p class="text-sm text-red-700 mt-1"><%= form.object.errors.full_messages_for(:password_confirmation).first %></p>
+        <% end %>
+      </div>
+
       <div class="flex flex-col pb-lg">
         <%= form.label :postal_code, "郵便番号", class:"py-xs font-bold text-gray-900" %>
         <% if form.object.errors[:postal_code].any? %>
@@ -176,10 +197,9 @@
           <% end %>
         </div>
       </div>
-
         <div class="w-full flex pt-xxl pb-lg gap-xl">
           <div class="w-full flex justify-center items-center">
-            <%= link_to "詳細へ戻る", admin_users_path ,class:"mx-xs px-md py-sm border rounded-md inline-flex justify-center items-center font-bold text-gray-700"%>
+            <%= link_to "戻る", admin_users_path ,class:"mx-xs px-md py-sm border rounded-md inline-flex justify-center items-center font-bold text-gray-700"%>
             <%= form.submit "保存" , class:"mx-xs px-xxl py-sm border rounded-md inline-flex justify-center items-center font-bold text-white bg-gold-900" %>
           </div>
         </div>

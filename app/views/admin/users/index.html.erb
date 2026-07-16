@@ -8,7 +8,7 @@
           <li>
             <%= link_to "Home", admin_users_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
           </li>
-          <img src="/right-vector.svg" alt="矢印" class="w-md h-md pr-xs"/>
+          <%= image_tag "right-vector.svg" alt="矢印" class="w-md h-md pr-xs" %>
           <li class="font-bold pr-xs text-md hover:text-gray-900 hover:underline" aria-current="page">
             <%= content_for(:title) %>
           </li>
@@ -52,7 +52,7 @@
           </div>
           <div class="flex min-h-3xl items-center justify-between gap-xs flex-1 py-xs pr-sm pl-md rounded-md border border-gray-300">
             <%= form.select :prefecture, @user_prefectures, { include_blank: "選択してください", selected: @param_prefecture  }, class: "appearance-none z-xxs self-stretch justify-center text-md font-normal font-japanese leading-sm tracking-md text-gray-500" %>
-            <img src="/down-vector.svg" alt="矢印" />
+            <%= image_tag "down-vector.svg" alt="矢印" %>
           </div>
         </div>
       </div>
@@ -67,14 +67,12 @@
           <div class="flex  gap-sm">
             <label class="flex items-center cursor-pointer">
               <%= form.radio_button :birthday, "asc", checked: @param_birthday == "asc", class: "sr-only peer" %>
-              <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
-              <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+              <div class="w-md h-md rounded-full border border-gray-400 bg-white flex items-center justify-center mr-xxs transition-all peer-checked:border-gold-600 peer-checked:bg-gold-600 after:content-[''] after:w-xxs after:h-xxs after:rounded-full after:bg-transparent peer-checked:after:bg-white"></div>
                 <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">昇順</span>
             </label>
             <label class="flex items-center cursor-pointer">
               <%= form.radio_button :birthday, "desc", checked: @param_birthday == "desc", class: "sr-only peer" %>
-              <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
-              <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+              <div class="w-md h-md rounded-full border border-gray-400 bg-white flex items-center justify-center mr-xxs transition-all peer-checked:border-gold-600 peer-checked:bg-gold-600 after:content-[''] after:w-xxs after:h-xxs after:rounded-full after:bg-transparent peer-checked:after:bg-white"></div>
               <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">降順</span>
             </label>
           </div>
@@ -88,20 +86,17 @@
               <div class="flex">
                 <label class="flex items-center cursor-pointer select-none pr-xs">
                   <%= form.radio_button :per_page, "20", checked:  @param_per_page == "20", class: "sr-only peer" %>
-                  <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
-                  <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+                  <div class="w-md h-md rounded-full border border-gray-400 bg-white flex items-center justify-center mr-xxs transition-all peer-checked:border-gold-600 peer-checked:bg-gold-600 after:content-[''] after:w-xxs after:h-xxs after:rounded-full after:bg-transparent peer-checked:after:bg-white"></div>
                     <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">20件</span>
                 </label>
                 <label class="flex items-center cursor-pointer select-none pr-xs">
                   <%= form.radio_button :per_page, "50", checked:  @param_per_page == "50", class: "sr-only peer" %>
-                  <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
-                  <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+                  <div class="w-md h-md rounded-full border border-gray-400 bg-white flex items-center justify-center mr-xxs transition-all peer-checked:border-gold-600 peer-checked:bg-gold-600 after:content-[''] after:w-xxs after:h-xxs after:rounded-full after:bg-transparent peer-checked:after:bg-white"></div>
                     <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">50件</span>
                 </label>
                 <label class="flex items-center cursor-pointer select-none pr-xs">
                   <%= form.radio_button :per_page, "100", checked:  @param_per_page == "100", class: "sr-only peer" %>
-                  <img src="/radio_off.svg" alt="ラジオオフ" class="block peer-checked:hidden" />
-                  <img src="/radio_on.svg" alt="ラジオオン" class="hidden peer-checked:block" />
+                  <div class="w-md h-md rounded-full border border-gray-400 bg-white flex items-center justify-center mr-xxs transition-all peer-checked:border-gold-600 peer-checked:bg-gold-600 after:content-[''] after:w-xxs after:h-xxs after:rounded-full after:bg-transparent peer-checked:after:bg-white"></div>
                     <span class="justify-start text-sm font-normal font-japanese leading-xs tracking-tight">100件</span>
                 </label>
               </div>
@@ -141,7 +136,7 @@
                 <td class="py-md text-center flex justify-center">
                   <%= link_to [:admin, user] do %>
                     <span class="w-5xl flex items-center gap-3xs py-3xs px-sm rounded-sm border text-gray-700 hover:text-white bg-white hover:bg-gray-700 ">詳細
-                      <img src="/right-vector.svg" alt="矢印" class="w-sm h-sm"/>
+                      <%= image_tag "right-vector.svg" alt="矢印" class="w-sm h-sm" %>
                     </span>
                   <% end %>
                 </td>
