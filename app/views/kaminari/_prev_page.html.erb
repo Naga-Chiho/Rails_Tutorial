@@ -10,6 +10,6 @@
   <%= image_tag "elements.svg", alt: "矢印", class: "w-xxl h-xxl" %>
 <% else %>
   <span class="prev  w-xxl h-xxl p-ms m-xs flex justify-center items-center border rounded-xs border-gray-400 bg-white">
-    <%= link_to_unless current_page.last?, image_tag('/right-vector-brown.svg', alt: "矢印", class: "w-sm h-sm rotate-180"), url, rel: 'next', remote: remote %>
+    <%= link_to_unless current_page.last?, image_tag('right-vector-brown.svg', alt: "矢印", class: "w-sm h-sm rotate-180"), url, rel: 'next', remote: remote %>
   </span>
 <% end %>
