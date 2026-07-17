@@ -35,3 +35,5 @@
 
 # .env.sampleは追跡する。
 !/.env.sample
+/app/assets/builds/*
+!/app/assets/builds/.keep

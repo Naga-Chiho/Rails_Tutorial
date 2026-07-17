@@ -1,23 +1,25 @@
-<h1>管理画面 ログイン</h1>
-
-<%= form_with url: admin_sessions_path do |form| %>
-  <div>
-    <%= form.label :email, "メールアドレス" %>
-    <%= form.email_field :email %>
+<div class="w-full min-h-screen flex flex-col items-center font-japanese bg-gray-100">
+  <%= image_tag "logo.png", alt: "ロゴ" ,class: "w-7xl pt-6xl" %>
+  <h1 class="py-xl text-xxl font-bold font-weight-regular leading-xs">ログイン</h1>
+  <%= form_with url: admin_sessions_path do |form| %>
+    <div class="bg-white py-xl w-form-max">
+      <div class="flex flex-col px-6xl">
+        <%= form.label :email, "メールアドレス" , class:"py-xs font-bold text-gray-900" %>
+        <%= form.email_field :email ,class: "px-ms py-xs border border-gray-300 rounded-sm bg-gray-200"%>
+      </div>
+      <div class="flex flex-col px-6xl pt-xl">
+        <%= form.label :password, "パスワード", class:"py-xs font-bold text-gray-900" %>
+        <%= form.password_field :password, class: "px-ms py-xs border border-gray-300 rounded-sm bg-gray-200" %>
+      </div>
+      <div class="flex flex-col px-7xl pt-3xl">
+        <%= form.submit "ログイン" , class:"px-6xl py-sm font-bold text-white bg-gold-900 rounded-full"%>
+      </div>
+      <div class="flex flex-col px-7xl pt-xl">
+        <%= button_to 'GitHubでログイン', '/auth/github', data: { turbo: false }, class:"px-6xl py-sm font-bold bg-white border rounded-full" %>
+      </div>
+      <div class="flex flex-col px-7xl pt-xl">
+        <%= link_to '新規登録', new_admin_signup_path, class: "px-6xl py-sm text-center font-bold bg-white border rounded-full hover:bg-gray-50 block" %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :password, "パスワード" %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div>
-    <%= form.submit "ログイン" %>
-  </div>
-<% end %>
-
-<hr>
-
-<div>
-  <%= button_to 'GitHubでログイン', '/auth/github', data: { turbo: false } %>
 </div>

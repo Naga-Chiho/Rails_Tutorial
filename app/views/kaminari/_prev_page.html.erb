@@ -6,6 +6,10 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="prev">
-  <%= link_to_unless current_page.first?, '<', url, rel: 'prev', remote: remote , style: "width: 12px; height: 12px; border: 1px solid; padding: 4px;" %>
-</span>
+<% if current_page.first? %>
+  <%= image_tag "elements.svg", alt: "矢印", class: "w-xxl h-xxl" %>
+<% else %>
+  <span class="prev  w-xxl h-xxl p-ms m-xs flex justify-center items-center border rounded-xs border-gray-400 bg-white">
+    <%= link_to_unless current_page.last?, image_tag('right-vector-brown.svg', alt: "矢印", class: "w-sm h-sm rotate-180"), url, rel: 'next', remote: remote %>
+  </span>
+<% end %>

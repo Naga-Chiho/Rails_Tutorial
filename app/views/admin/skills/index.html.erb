@@ -1,33 +1,68 @@
-<h1>Skills</h1>
-<% content_for(:title, "スキル一覧") %>
-
-  <% content_for :head do %>
-    <%= tag.meta name: "description", content: "スキル一覧(管理者)のページです" %>
-    <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, Departments, Skills" %>
-    <%= tag.meta property: "og:title", content: "スキル一覧 | Railsチュートリアル" %>
-    <%= tag.meta property: "og:description", content: "スキル一覧(管理者)のページです" %>
-    <%= tag.meta property: "og:type", content: "article" %>
-    <%= tag.meta property: "og:url", content: skills_url %>
-    <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
-    <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
-    <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
-  <% end %>
-
-<div id="skills">
-  <%= link_to "新規作成", new_admin_skill_path %>
-
+<div class="w-full h-auto font-japanese bg-gray-100">
+  <% content_for(:title, "スキル一覧") %>
+    <% content_for :head do %>
+      <%= tag.meta name: "description", content: "スキル一覧(管理者)のページです" %>
+      <%= tag.meta name: "keywords", content: "Rails, Tutorial, Admin, Users, skills, Skills" %>
+      <%= tag.meta property: "og:title", content: "スキル一覧 | Railsチュートリアル" %>
+      <%= tag.meta property: "og:description", content: "スキル一覧(管理者)のページです" %>
+      <%= tag.meta property: "og:type", content: "article" %>
+      <%= tag.meta property: "og:url", content: skills_url %>
+      <%= tag.meta name: "twitter:card", content: "summary_large_image" %>
+      <%= tag.meta name: "twitter:site", content: "@HongoMCC" %>
+      <%= tag.meta name: "twitter:creator", content: "@HongoMCC" %>
+    <% end %>
+  <div id="skills">
+    <div class="w-full flex justify-between items-center self-stretch px-lg">
+      <h1 class="text-xl font-bold leading-xs tracking-tight-xxl">スキル一覧</h1>
+      <%= link_to "新規作成", new_admin_skill_path , class: "flex align-center py-md px-lg gap-3xs border rounded-sm border-gray-400 bg-white"%>
+    </div>
+  </div>
   <% content_for :breadcrumb do %>
-    <nav>
-      <ol style="list-style: none;">
-        <li><%= link_to content_for(:title), admin_skills_path %></li>
-      </ol>
-    </nav>
+    <div class="w-full h-auto flex flex-col justify-between items-start items-stretch gap-ms px-lg py-lg bg-gray-100">
+      <nav aria-label="Breadcrumb">
+        <ol class="list-none flex items-center gap-2">
+          <li>
+            <%= link_to "Home", admin_users_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
+          </li>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
+          <li class="font-bold pr-xs text-md hover:text-gray-900 hover:underline" aria-current="page">
+            <%= content_for(:title) %>
+          </li>
+        </ol>
+      </nav>
+    </div>
   <% end %>
-
-  <% @skills.each do |skill| %>
-      <li style="padding-bottom: 12px;">
-        <h3><%= skill.name %></h3>
-        <%= link_to "詳細",  [:admin, skill]  %>
-      </li>
-  <% end %>
+  <div class="flex flex-col"> 
+      <span class="w-full p-lg"><%= @skills.total_count %>件中 <%= @skills.offset_value + 1 %> 〜 <%= @skills.offset_value + @skills.length %>件を表示中</span>
+      <div class="p-lg mx-lg self-stretch bg-white rounded-lg shadow-md inline-flex flex-col justify-start items-start overflow-hidden">
+        <table class="w-full border-t border-gray-300">
+          <thead>
+            <tr>
+              <th class="py-md">ID</th>
+              <th class="py-md">スキル</th>
+              <th class="py-md">リンク</th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @skills.each do |skill| %>
+                <tr class="border-t border-gray-300">
+                  <td class="py-md text-center"><%= skill.id %></td>
+                  <td class="py-md text-center"><%= skill.name %></td>
+                  <td class="py-md text-center flex justify-center">
+                    <%= link_to [:admin, skill] do %>
+                      <span class="w-5xl flex items-center gap-3xs py-3xs px-sm rounded-sm border text-gray-700 hover:text-white bg-white hover:bg-gray-700 ">詳細
+                        <%= image_tag "right-vector.svg", alt: "矢印", class: "w-sm h-sm" %>
+                      </span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="p-xxs">
+      <%= paginate @skills, window: 1 %>
+    </div>
+  </div>
 </div>

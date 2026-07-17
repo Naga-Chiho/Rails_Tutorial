@@ -1,4 +1,25 @@
-<h1>Edit user</h1>
-
-<%= render "form", user: @user %>
-<%= link_to "Cancel", @user %>
+<div class="bg-gray-100">
+  <% content_for :breadcrumb do %>
+    <div class="w-full h-auto flex flex-col flex-1 justify-between items-start items-stretch gap-ms px-lg pt-lg bg-gray-100">
+      <nav aria-label="Breadcrumb">
+        <ol class="list-none flex items-center gap-2">
+          <li>
+            <%= link_to "Home", admin_users_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
+          </li>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
+            <%= link_to "ユーザー一覧", admin_users_path, class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
+          <li>
+            <%= link_to "ユーザー詳細(" + @user.name + ")", [:admin, @user] , class: "text-gray-600 pr-xs text-md hover:text-gray-900 hover:underline" %>
+          </li>
+          <%= image_tag "right-vector.svg", alt: "矢印", class: "w-md h-md pr-xs" %>
+          <li class="font-bold">
+            <%= link_to "ユーザー編集(" + @user.name + ")", [:admin, @user] %>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
+  <h1 class="w-full flex justify-between items-center self-stretch p-lg text-xl font-bold leading-xs tracking-tight-xxl">ユーザー編集</h1>
+  <%= render "form", user: @user %>
+</div>

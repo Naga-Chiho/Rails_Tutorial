@@ -1,9 +1,20 @@
-<%= form_with model: [:admin, @department] do |form| %>
-  <div>
-    <%= form.label :name, "部署名" %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.submit "保存する" %>
-  </div>
-<% end %>
+<div class="w-full min-h-screen pt-lg font-japanese bg-gray-100">
+    <%= form_with model: [:admin, @department] do |form| %>
+      <div class="w-form-max p-lg mx-lg self-stretch bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="flex flex-col">
+          <%= form.label :name, "ID" , class:"py-xs" %>
+          <%= form.text_field :id, disabled: true, class: "w-1/2 px-ms py-xs border border-gray-300 rounded-sm disabled:bg-gray-200" %>
+        </div>
+        <div class="flex flex-col">
+          <%= form.label :name, "部署名", class:"py-x pt-lg pb-xs" %>
+          <%= form.text_field :name, class: "px-ms py-xs border border-gray-300 rounded-sm " %>
+        </div>
+        <div class="w-full flex pt-xxl pb-lg gap-xl">
+          <div class="w-full flex justify-center items-center">
+            <%= link_to "詳細へ戻る", admin_departments_path ,class:"mx-xs px-md py-sm border rounded-md inline-flex justify-center items-center font-bold text-gray-700"%>
+            <%= form.submit "保存" , class:"mx-xs px-xxl py-sm border rounded-md inline-flex justify-center items-center font-bold text-white bg-gold-900" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
